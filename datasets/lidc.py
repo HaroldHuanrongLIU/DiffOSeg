@@ -72,6 +72,9 @@ class BaseDataset(Dataset):
             masks = []
             for mask in value['masks']:
                 masks.append(pad_im(mask, input_size))
+            # Simulate preference identities by area; Python sorting preserves
+            # the supplied order when two masks have the same area.
+            masks.sort(key=lambda mask: np.count_nonzero(mask > 0.5))
             self.mask_labels.append(masks)
             self.series_uid.append(value['series_uid'])
 
@@ -201,8 +204,9 @@ def to_tensor(arr: np.ndarray) -> torch.Tensor:
 
 
 def transform(image, labels):
-    labels = labels.astype(int)
-    labels = one_hot_encoding(labels)
+    # A selected-expert mean is a Bernoulli probability, not an integer mask.
+    labels = labels.astype(np.float32)
+    labels = np.stack((1.0 - labels, labels), axis=-1)
 
     image = tf.to_tensor(image.transpose((1, 2, 0))).float()
     labels = to_tensor(labels)
@@ -219,13 +223,11 @@ def transform(image, labels):
     image = torch.rot90(image, rots, [1, 2])
     labels = torch.rot90(labels, rots, [1, 2])
 
-    image = image * 2
     return image, labels
 
 
 def batch_transform(image, labels):
     image = tf.to_tensor(image.transpose((1, 2, 0))).float()
-    image = image * 2
 
     for i in range(4):
         labels[str(i)] = labels[str(i)].astype(int)

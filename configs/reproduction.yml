@@ -1,0 +1,31 @@
+# Paper: https://arxiv.org/abs/2507.13087v2, Section 3.1.
+# Assumptions and verification are documented in docs/e11_lidc.md.
+data_root: ${HOME}/PhD_Course_Project/CISC8006/DiffOSeg/data
+seed: 1337
+batch_size: 12
+num_workers: 4
+torch_threads: 4
+time_steps: 250
+beta_schedule: cosine
+beta_schedule_params: {s: 0.008}
+polyak_alpha: 0.9999
+backbone: unet_openai
+unet_openai:
+  base_channels: 32
+  channel_mult: null
+  attention_resolutions: [32, 16, 8]
+  num_heads: 1
+  num_head_channels: 32
+  softmax_output: true
+feature_cond_encoder: {type: none, train: false}
+learning_rate: 0.0001
+minimum_learning_rate: 0.000001
+checkpoint_every: 5000
+log_every: 100
+sampling_batch_size: 12
+preference_samples: 10
+datasets:
+  lidc:
+    folds: [0, 1, 2, 3]
+    stage_steps: [120000, 90000]
+    consensus_samples: [10, 30, 50]

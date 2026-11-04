@@ -484,13 +484,9 @@ class Trainer:
 
         batch_size = x0.shape[0]
 
-        # Sample a random step and generate gaussian noise
-        t = torch.full((batch_size,), 100, dtype=torch.long, device=device)#torch.randint(1, self.time_steps + 1, size=(batch_size,), device=device)
+        # Sample a diffusion timestep and corrupt the target.
+        t = torch.randint(1, self.time_steps + 1, size=(batch_size,), device=device)
         xt = self.diffusion_model.q_xt_given_x0(x0, t).sample()
-        t1 = torch.full((batch_size,), 10, dtype=torch.long, device=device)
-        xt1 = self.diffusion_model.q_xt_given_x0(x0, t1).sample()
-        np.save("visual_debug/xt.npy", torch.argmax(xt,dim=1).detach().cpu().numpy()) 
-        np.save("visual_debug/x0pred.npy", torch.argmax(xt1,dim=1).detach().cpu().numpy()) 
         # Estimate the noise with the model
         condition = {key: value.contiguous() for key, value in condition.items()}
         ret = self.model(xt.contiguous(), condition, feature_condition, t)
@@ -1112,4 +1108,3 @@ def run_train(local_rank: int, params: dict):
 
         engine.run(train_loader, max_epochs=params["max_epochs"])
         writer.close()
-

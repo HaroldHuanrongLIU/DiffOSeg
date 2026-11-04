@@ -23,10 +23,6 @@ def linear_schedule(time_steps: int, start=1e-2, end=0.2) -> Tuple[Tensor, Tenso
 
 
 def cosine_schedule(time_steps: int, s: float = 8e-3) -> Tuple[Tensor, Tensor, Tensor]:
-    t = torch.arange(0, time_steps)
-    s = 0.008
-    cumalphas = torch.cos(((t / time_steps + s) / (1 + s)) * (math.pi / 2)) ** 2
-
     def func(t): return math.cos((t + s) / (1.0 + s) * math.pi / 2) ** 2
 
     betas_ = []
@@ -36,6 +32,7 @@ def cosine_schedule(time_steps: int, s: float = 8e-3) -> Tuple[Tensor, Tensor, T
         betas_.append(min(1 - func(t2) / func(t1), 0.999))
     betas = torch.tensor(betas_)
     alphas = 1 - betas
+    cumalphas = torch.cumprod(alphas, dim=0)
     return betas, alphas, cumalphas
 
 
