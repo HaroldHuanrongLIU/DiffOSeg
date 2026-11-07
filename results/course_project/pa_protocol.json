@@ -1,0 +1,107 @@
+{
+  "A": "Average all four binary masks; consume unused P subset draws to preserve paired RNG",
+  "P": "Uniform subset size 1..4, uniform subset of that size, average selected binary masks",
+  "batch_size": 12,
+  "budget": {
+    "accounting": "Sum elapsed time of allocated single-GPU worker processes, including smoke/evaluation/failures; waiting excluded",
+    "actual_host_gpus": 1,
+    "gpu_hours": 240,
+    "max_gpus": 2
+  },
+  "checkpoint": "Final EMA at exactly 120000 updates; no heldout checkpoint selection",
+  "claim": "P has lower GED30 and higher DiceSoft30 than A on one frozen LIDC patient fold",
+  "common_corrections": [
+    "Uniform training t in 1..250",
+    "Cumulative cosine alpha from cumprod",
+    "Preserve fractional consensus",
+    "Unit-range inputs",
+    "Patient-disjoint folds"
+  ],
+  "common_label_encoding": "Per-pixel categorical sample from [1-p,p] before forward diffusion and KL target; disclosed interpretation, not fully specified in paper",
+  "created_at": "2026-10-25T22:58:25.336734+08:00",
+  "data_transforms": "Unit-range 128x128, released random flips and 90-degree rotations, shared intensity multiplier Uniform[0.9,1.1] clipped to [0,1]. Paper specifies intensity scaling but not its range; this range is a frozen implementation assumption.",
+  "evaluation": {
+    "GED": "Released empirical V-statistic with IoU=0 for empty/empty; alternative convention reported separately",
+    "aggregation": "Unweighted slice mean within the single fold, then equal mean across seeds",
+    "dice_thresholds": [
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      0.9
+    ],
+    "diffusion_steps": 250,
+    "labels": "all four expert masks",
+    "prediction_threshold": 0.5,
+    "samples_per_slice": 30,
+    "sampling_batch_size": 30
+  },
+  "evaluation_seed": "1000000 + training_seed * 1000 + heldout slice index",
+  "fold": 0,
+  "job_order": [
+    [
+      "P",
+      20261
+    ],
+    [
+      "A",
+      20261
+    ],
+    [
+      "A",
+      20262
+    ],
+    [
+      "P",
+      20262
+    ],
+    [
+      "P",
+      20263
+    ],
+    [
+      "A",
+      20263
+    ]
+  ],
+  "limits": [
+    "Single previously examined fold",
+    "Three seeds",
+    "Disclosed common implementation interpretations",
+    "No paper absolute-value matching requirement",
+    "Budget exhaustion or incomplete paired runs cannot support claim"
+  ],
+  "optimizer": "Existing released Adam and polynomial LR construction; EMA alpha=0.9999",
+  "paper_reference": {
+    "A": {
+      "DiceSoft30": 0.9043,
+      "GED30": 0.1029
+    },
+    "P": {
+      "DiceSoft30": 0.922,
+      "GED30": 0.0773
+    }
+  },
+  "prior_exposure": "Earlier P-only corrected runs evaluated all four folds. Fold 0 is the fixed first fold, not selected by performance. Historical results are pilot evidence only.",
+  "registration": "Local protocol freeze before this paired comparison; not an external registry",
+  "split_seed": 1337,
+  "statistics": {
+    "CI": "two-sided percentile 95%",
+    "difference": "P minus A",
+    "method": "paired seed-by-patient multi-bootstrap",
+    "not_supported": "GED CI lower > 0 or Dice CI upper < 0",
+    "otherwise": "inconclusive",
+    "replicates": 10000,
+    "secondary": "Patient-only paired bootstrap conditional on the three seeds, and alternative empty-mask GED",
+    "seed": 271828,
+    "supported": "GED CI upper < 0 and Dice CI lower > 0"
+  },
+  "steps_per_job": 120000,
+  "training_jobs": 6,
+  "training_rng": "Seed Python, NumPy, Torch CPU and CUDA before data sample/model construction; same seed within each P/A pair",
+  "training_seeds": [
+    20261,
+    20262,
+    20263
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "assembled_date": "2026-11-08",
+  "release_state": "candidate_with_recorded_team_instructions",
+  "assembly_base_commit": "94de5f8fbf86afb32ab03d730e870f583a7ee67e",
+  "pa_source_id": "80687fd71f61ed61a4feff3ef8583e3cc3a3e1b0c2c39006a3fc67052a4b6eb5",
+  "pa_original_freeze_sha256": "1999cf839457e18a33cbe0dcad6fdb662183c00410fd79f1aa70fcfd7a7e1722",
+  "dataset_sha256": "6c401c96b0e1737d43fdccfc446cb0c3601473d3b7668ad4a68d22ec0c1ee81b",
+  "train_patients": 160,
+  "test_patients": 54,
+  "test_slices": 450,
+  "artifacts": {
+    "pa": {
+      "file": "pa_results.json",
+      "sha256": "e81bfc1017529f3bf43846064b0222649a1495463c77be7710c3bfba1761c843",
+      "archive_relative": "20261025_table3_pa_claim_v1/final_results.json"
+    },
+    "pa_protocol": {
+      "file": "pa_protocol.json",
+      "sha256": "734feb8f16f7dbd74a29717dfad5cdcd2560b60f758faa1995b87991316f83fa",
+      "archive_relative": "20261025_table3_pa_claim_v1/protocol.json"
+    },
+    "pa_source": {
+      "file": "pa_source.tar.gz",
+      "sha256": "27263d1c13aed9dc3d64038bf10851b4de2832d02e156cb1629c0e05888a6cc3",
+      "archive_relative": "20261025_table3_pa_claim_v1/source-80687fd71f61.tar.gz"
+    },
+    "pa_metrics_dependency": {
+      "file": "pa_metrics_set.py",
+      "sha256": "08b0a42dd7b6fd1282ed357338b9632f6c897fbf436f0ace929ee93c13f38879",
+      "archive_relative": "20261025_table3_pa_claim_v1/source/metrics_set.py"
+    },
+    "e11": {
+      "file": "e11.json",
+      "sha256": "d27211bd93bc8eb2eccd728bd9a04840dfb0e7864ec0d15cd7826c782edeb2a0",
+      "archive_relative": "20261106_rank_boundary_v1/baseline/fourfold_summary.json"
+    },
+    "v1": {
+      "file": "v1.json",
+      "sha256": "382cb8465d20f23dba3f7dcc1a5cc86b03a41381bb100e3b982de2fa57859e98",
+      "archive_relative": "20261106_rank_boundary_v1/assessment/fourfold_comparison.json"
+    },
+    "v2": {
+      "file": "v2.json",
+      "sha256": "e37024c9349726e706110ab02dea45d56c111575661aafbabb68826819b17e6f",
+      "archive_relative": "20261106_polar_residual_v2/assessment/fourfold_comparison.json"
+    },
+    "v3": {
+      "file": "v3.json",
+      "sha256": "27ca97941a8a2cca095358bf6d365559c67f90e3210b436c01be6851a1a6076c",
+      "archive_relative": "20261106_vote_transport_v3/assessment/fourfold_comparison.json"
+    },
+    "v4": {
+      "file": "v4.json",
+      "sha256": "1b8330667c6463b3a650465f9a42e70867a0873e5ce843f3bfbeb78336c18007",
+      "archive_relative": "20261106_joint_energy_v4/assessment/fourfold_comparison.json"
+    },
+    "v9": {
+      "file": "v9.json",
+      "sha256": "33226deadde97f57179f0c261b5631fd50c86b8f64e2956a06b56ab56a33c281",
+      "archive_relative": "20261106_order_preference_v9/assessment/fourfold_comparison.json"
+    },
+    "preference90": {
+      "file": "preference90.json",
+      "sha256": "2024e556c9cf003d037701d458d2da3eb527deb0192bf8666cf8383651a220d0",
+      "archive_relative": "20261106_preference90_comparisonb/assessment/preference_report.json"
+    },
+    "formal_a": {
+      "file": "formal_a.json",
+      "sha256": "799311c1c176f2d8239c619e4c6f35a67fa0ec9300c60c3194cb87d97ade58a3",
+      "archive_relative": "20261106_preference91_formal_a/assessment/outer_report.json"
+    },
+    "formal_e": {
+      "file": "formal_e.json",
+      "sha256": "7131bf880b3fb533bfea48172a2de6e2901697198b74f9c8367a51af1cb19c44",
+      "archive_relative": "20261106_preference91_formal_e/assessment/outer_report.json"
+    },
+    "pa_cases": {
+      "file": "pa_cases.csv",
+      "sha256": "e744fa27236aa55c4751e9aff9955a4b2b5f0abb0385c721912c89695b2d7d9d",
+      "derivation": "Frozen case JSON; sorted local integer clusters replace patient identifiers"
+    },
+    "pa_runs": {
+      "file": "pa_runs.json",
+      "sha256": "0a98a1a3ef121a0133aa0d15b5a022460941c990c5f1a5737f8e0a572de07c9d",
+      "derivation": "Six frozen configs, results, execution and training records"
+    },
+    "registry": {
+      "file": "registry.csv",
+      "sha256": "062f42fbaf806d3b604fe2defe177ec0888b90b256d07d1b626cc67c450fc83d",
+      "derivation": "Directory inventory; indexed_archive is not a completion claim"
+    },
+    "compute_receipts.csv": {
+      "file": "compute_receipts.csv",
+      "sha256": "383a9bad46b63c5ebf50c6e013a27701aef536a8e362e5e53b8675075fdeea25",
+      "derivation": "Explicit fit/result timing fields; coverage limitations recorded"
+    },
+    "compute_coverage.json": {
+      "file": "compute_coverage.json",
+      "sha256": "a7901959deca6eca27056acec3d0681c0843b4559f80fd9399c97a9ec28b5628",
+      "derivation": "Explicit fit/result timing fields; coverage limitations recorded"
+    }
+  }
+}

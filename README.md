@@ -28,6 +28,10 @@ Specify parameters such as stage in params_eval.yml
 python ddpm_eval.py  --params params_eval.yml --gpu gpu_id
 ```
 
+## CISC8006 course project
+
+Start with [the course evidence package](docs/course_project/README.md) for the submitted Table 3 P/A claim, its inconclusive result, the separate improvement studies, CPU verification and submission status.
+
 ## LIDC reproduction and experiment archive
 
 - [Baseline-to-best result summary (Chinese)](docs/lidc_reproduction_to_best.md)

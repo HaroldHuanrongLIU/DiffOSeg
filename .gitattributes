@@ -1,0 +1,12 @@
+# Binary deliverables must never undergo text conversion or line-based merging.
+report/*.pdf binary
+presentation/*.pdf binary
+presentation/*.pptx binary
+
+# These audit artifacts are hash-bound; preserve exact bytes across checkouts.
+results/course_project/** -text
+results/course_project/*.tar.gz binary
+results/course_project/pa_metrics_set.py binary
+
+# Python csv.writer emits standard CRLF records. CR is part of the line ending.
+results/course_project/**/*.csv whitespace=cr-at-eol

@@ -1,0 +1,256 @@
+{
+  "alternative_ged": {
+    "A_mean": [
+      0.10435791943912152,
+      0.9019856695389306
+    ],
+    "A_per_seed": [
+      [
+        0.1016228038403723,
+        0.9037364841765836
+      ],
+      [
+        0.10773212691148122,
+        0.9006449503666837
+      ],
+      [
+        0.10371882756551107,
+        0.9015755740735266
+      ]
+    ],
+    "P_mean": [
+      0.10427619308233262,
+      0.9031387291848669
+    ],
+    "P_per_seed": [
+      [
+        0.10335559424426821,
+        0.9039058800935746
+      ],
+      [
+        0.10469966158270835,
+        0.9030725948181415
+      ],
+      [
+        0.10477332342002127,
+        0.9024377126428813
+      ]
+    ],
+    "aggregation": "slice mean within seed, then equal mean over training seeds",
+    "bootstrap_seed": 271828,
+    "decision": "inconclusive",
+    "difference": [
+      -8.172635678891782e-05,
+      0.0011530596459353418
+    ],
+    "difference_ci95": [
+      [
+        -0.005397062606939493,
+        0.005440307374603567
+      ],
+      [
+        -0.0022915793836815832,
+        0.004960256549276564
+      ]
+    ],
+    "difference_definition": "P minus A",
+    "limitation": "Three training seeds provide a limited estimate of training variability.",
+    "metrics": [
+      "GED",
+      "Dice_soft"
+    ],
+    "nboot": 10000,
+    "patients": 54,
+    "resampling": "paired seed and patient weights; retain every slice of each sampled patient",
+    "sample_seeds": true,
+    "slices": 450,
+    "training_seeds": 3
+  },
+  "completed_at": "2026-10-26T11:10:06.765255+08:00",
+  "conditional_patient_only": {
+    "A_mean": [
+      0.10435791943912152,
+      0.9019856695389306
+    ],
+    "A_per_seed": [
+      [
+        0.1016228038403723,
+        0.9037364841765836
+      ],
+      [
+        0.10773212691148122,
+        0.9006449503666837
+      ],
+      [
+        0.10371882756551107,
+        0.9015755740735266
+      ]
+    ],
+    "P_mean": [
+      0.10427619308233262,
+      0.9031387291848669
+    ],
+    "P_per_seed": [
+      [
+        0.10335559424426821,
+        0.9039058800935746
+      ],
+      [
+        0.10469966158270835,
+        0.9030725948181415
+      ],
+      [
+        0.10477332342002127,
+        0.9024377126428813
+      ]
+    ],
+    "aggregation": "slice mean within seed, then equal mean over training seeds",
+    "bootstrap_seed": 271828,
+    "decision": "inconclusive",
+    "difference": [
+      -8.172635678891782e-05,
+      0.0011530596459353418
+    ],
+    "difference_ci95": [
+      [
+        -0.0037094398984040254,
+        0.003534439262389131
+      ],
+      [
+        -0.0013854642106573938,
+        0.0038444855184418107
+      ]
+    ],
+    "difference_definition": "P minus A",
+    "limitation": "Three training seeds provide a limited estimate of training variability.",
+    "metrics": [
+      "GED",
+      "Dice_soft"
+    ],
+    "nboot": 10000,
+    "patients": 54,
+    "resampling": "paired seed and patient weights; retain every slice of each sampled patient",
+    "sample_seeds": false,
+    "slices": 450,
+    "training_seeds": 3
+  },
+  "gpu_hours": 12.156886564493439,
+  "primary": {
+    "A_mean": [
+      0.10435791943912152,
+      0.9019856695389306
+    ],
+    "A_per_seed": [
+      [
+        0.1016228038403723,
+        0.9037364841765836
+      ],
+      [
+        0.10773212691148122,
+        0.9006449503666837
+      ],
+      [
+        0.10371882756551107,
+        0.9015755740735266
+      ]
+    ],
+    "P_mean": [
+      0.10427619308233262,
+      0.9031387291848669
+    ],
+    "P_per_seed": [
+      [
+        0.10335559424426821,
+        0.9039058800935746
+      ],
+      [
+        0.10469966158270835,
+        0.9030725948181415
+      ],
+      [
+        0.10477332342002127,
+        0.9024377126428813
+      ]
+    ],
+    "aggregation": "slice mean within seed, then equal mean over training seeds",
+    "bootstrap_seed": 271828,
+    "decision": "inconclusive",
+    "difference": [
+      -8.172635678891782e-05,
+      0.0011530596459353418
+    ],
+    "difference_ci95": [
+      [
+        -0.005397062606939493,
+        0.005440307374603567
+      ],
+      [
+        -0.0022915793836815832,
+        0.004960256549276564
+      ]
+    ],
+    "difference_definition": "P minus A",
+    "limitation": "Three training seeds provide a limited estimate of training variability.",
+    "metrics": [
+      "GED",
+      "Dice_soft"
+    ],
+    "nboot": 10000,
+    "patients": 54,
+    "resampling": "paired seed and patient weights; retain every slice of each sampled patient",
+    "sample_seeds": true,
+    "slices": 450,
+    "training_seeds": 3
+  },
+  "protocol_sha256": "734feb8f16f7dbd74a29717dfad5cdcd2560b60f758faa1995b87991316f83fa",
+  "scope": "Fixed previously examined patient fold; corrected common implementation with disclosed assumptions",
+  "training_seeds": [
+    20261,
+    20262,
+    20263
+  ],
+  "verification": [
+    {
+      "cases": 450,
+      "checkpoint_sha256": "d870d58d1afe3beccba9f3724a4299ade50ba2dba08f3498aedb197158fe79a2",
+      "condition": "P",
+      "seed": 20261,
+      "verified": true
+    },
+    {
+      "cases": 450,
+      "checkpoint_sha256": "fb6860b89302c1691f015604c99a01aeedd52bdf95441f138f1355379ceccfb6",
+      "condition": "P",
+      "seed": 20262,
+      "verified": true
+    },
+    {
+      "cases": 450,
+      "checkpoint_sha256": "fd375d45fe706e441467fb31b4ed362a8bf9997fff0523cb04f394d8e915287b",
+      "condition": "P",
+      "seed": 20263,
+      "verified": true
+    },
+    {
+      "cases": 450,
+      "checkpoint_sha256": "084234ad4b6706d688e917f74592c5bc15aed4bf18969f6cc45738f7ae588039",
+      "condition": "A",
+      "seed": 20261,
+      "verified": true
+    },
+    {
+      "cases": 450,
+      "checkpoint_sha256": "105159c33ab06aef6d941593968cb2b11170a6ee56d03562c64d7fb2ddbea70e",
+      "condition": "A",
+      "seed": 20262,
+      "verified": true
+    },
+    {
+      "cases": 450,
+      "checkpoint_sha256": "85bac9bffd85f00626c8d39c01e2a3a0dc44517207fd0e09606f669a2190fdd3",
+      "condition": "A",
+      "seed": 20263,
+      "verified": true
+    }
+  ]
+}

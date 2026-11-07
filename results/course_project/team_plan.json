@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-08",
+  "allocation_kind": "user_assigned_responsibility_weights",
+  "members": [
+    {
+      "name": "Keru ZHENG",
+      "weight_percent": 30,
+      "responsibility": "Claim, P/A implementation contract, data and frozen protocol"
+    },
+    {
+      "name": "Yanchen MU",
+      "weight_percent": 30,
+      "responsibility": "Evaluation, paired statistics, independent recomputation and diagnosis"
+    },
+    {
+      "name": "Huanrong LIU",
+      "weight_percent": 40,
+      "responsibility": "Improvement studies, integration, artifact, report and presentation"
+    }
+  ],
+  "teacher_confirmation": {
+    "state": "confirmed_by_user",
+    "source": "User annotation: 老师确认",
+    "details": "No separate teacher document, exact deadline or specific exception text supplied"
+  },
+  "technical_review": {
+    "execution": "delegated_to_Codex",
+    "source": "User annotation: 你替代成员检查"
+  },
+  "replay": {
+    "request": "User annotation: 重新跑一次复现结果就行。",
+    "scope": "Frozen-prediction metric and statistical replay",
+    "independent_classmate": false
+  }
+}

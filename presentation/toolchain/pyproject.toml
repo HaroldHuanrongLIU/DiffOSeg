@@ -1,0 +1,11 @@
+[project]
+name = "diffoseg-course-documents"
+version = "0.1.0"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+  "touying==0.14.4",
+  "typst==0.15.2",
+]
+
+[tool.uv]
+package = false

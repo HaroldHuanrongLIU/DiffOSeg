@@ -1,0 +1,12 @@
+{
+  "state": "failed_precision_check",
+  "recorded_at_utc": "2026-11-07T20:48:59.971280+00:00",
+  "source_sha256": "c79a51885c81b0a22762c3a2d3a85ed31794d7890928fca32cd44ecb41560537",
+  "condition": "P",
+  "seed": 20261,
+  "case_index": 116,
+  "reason": "Float64 arithmetic differs from frozen float32 metric accumulation; current reference reproduces saved score exactly.",
+  "float64_GED": 0.2970686411545647,
+  "saved_GED": 0.2970687448978424,
+  "absolute_difference": 1.0374327769069325e-07
+}

@@ -1,0 +1,126 @@
+{
+  "date": "2026-11-08",
+  "verification_owner": "Codex agent; not human/peer sign-off",
+  "checks": [
+    {
+      "command": [
+        "python",
+        "-B",
+        "scripts/check_course_project.py"
+      ],
+      "exit_code": 0,
+      "output": "SMOKE_PASS: frozen source; hashes; 6 runs; 2700 records; 54 paired patient clusters; decision=inconclusive"
+    },
+    {
+      "command": [
+        "/home/hrl/mohismlab/phd_course/cisc8006/DiffOSeg/.venv/bin/python",
+        "-B",
+        "scripts/check_course_project.py",
+        "--bootstrap",
+        "--archive-root",
+        "/mnt/hdd1/phd_course/cisc8006/DiffOSeg_runs"
+      ],
+      "exit_code": 0,
+      "output": "SMOKE_PASS: frozen source; hashes; 6 runs; 2700 records; 54 paired patient clusters; decision=inconclusive\nBOOTSTRAP_PASS: [[-0.005397062606939493, 0.005440307374603567], [-0.0022915793836815837, 0.004960256549276566]]"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_course_evidence.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output": "test_changed_patient_mapping_fails (test_course_evidence.CourseEvidenceTests.test_changed_patient_mapping_fails) ... ok\ntest_joint_decision_rule (test_course_evidence.CourseEvidenceTests.test_joint_decision_rule) ... ok\ntest_missing_or_duplicate_case_fails (test_course_evidence.CourseEvidenceTests.test_missing_or_duplicate_case_fails) ... ok\ntest_nonfinite_score_fails (test_course_evidence.CourseEvidenceTests.test_nonfinite_score_fails) ... ok\ntest_paired_cohort (test_course_evidence.CourseEvidenceTests.test_paired_cohort) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK"
+    },
+    {
+      "command": [
+        "bash",
+        "-n",
+        "scripts/build_course_documents.sh"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "local_markdown_links": "PASS",
+  "credential_scan": {
+    "scope": "new course text files and bundled source",
+    "patterns": 4,
+    "findings": 0,
+    "limitation": "pattern scan, not a blanket security certification"
+  },
+  "frozen_source_tests": {
+    "count": 34,
+    "exit_code": 0,
+    "source_id": "80687fd71f61ed61a4feff3ef8583e3cc3a3e1b0c2c39006a3fc67052a4b6eb5",
+    "command": "PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 <project-python> -B -m unittest discover -s tests -v",
+    "cwd": "isolated extracted pa_source plus pa_metrics_set.py",
+    "evidence": "executed in this closeout; 34 tests passed in 0.403s"
+  },
+  "prior_same_day_numeric_audit": {
+    "pa_case_rows": 2700,
+    "pa_mask_samples": 18,
+    "pa_mask_max_error": 4.640090775498429e-08,
+    "preference_rank_scores": 19308,
+    "preference_max_error": 0.0
+  },
+  "documents": {
+    "report/course_project.pdf": {
+      "pages": 6,
+      "sha256": "281266b11b8f25fb4bd7874f85288b042bc70f1b40f1137dc42e2e3ba3e8f1f9"
+    },
+    "presentation/course_project.pdf": {
+      "pages": 14,
+      "sha256": "69ddef32147829c2722825ccad12c527c38f1ed9b39d94530b65c4e95ffbe8b2"
+    }
+  },
+  "visual_review": "All pages previously inspected; updated report pages 1,2,3,5,6 and slides 12,13 inspected after this revision; unchanged layouts retained",
+  "pptx_validation": "presentation_validation.json",
+  "peer_audit": "not claimed; user requested Codex metric/statistical replay",
+  "clean_install": "NOT_RUN",
+  "new_training": "NOT_RUN",
+  "template_commit": "ac1964afca6a99bb60cb29ed2c2ddece00eb2eea",
+  "delegated_review_update": {
+    "date": "2026-11-08",
+    "executor": "Codex",
+    "teacher_confirmation": "user-reported",
+    "allocation": "Zheng 30%, Mu 30%, Liu 40%",
+    "test_count": 9,
+    "test_exit_code": 0,
+    "test_command": ".venv/bin/python -B -m unittest discover -s tests -p test_course_*.py -v",
+    "replay_summary": "results/course_project/replay_20261108_verified/summary.json",
+    "replay_sha256": "ecd3e66715e1878093f4d522890b4a1a7c7fecf9278c87e0ec62407a923339e4",
+    "case_groups": 2700,
+    "prediction_masks": 81000,
+    "maximum_frozen_precision_metric_error": 0.0,
+    "decision": "inconclusive",
+    "initial_failure": "replay_20261108/failure.json",
+    "initial_failure_resolution": "match frozen float32 accumulation; retain float64 diagnostic"
+  }
+}

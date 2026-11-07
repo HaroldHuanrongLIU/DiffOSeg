@@ -1,0 +1,6 @@
+{
+  "receipt_count": 534,
+  "receipts_with_gpu_name": 129,
+  "scope": "Leaf fit/result timers at up to four directory levels; source/cache/baseline copies excluded",
+  "interpretation": "Timer inventory only. Overlap, missing stages and GPU allocation are not reconciled. Do not sum as total GPU-hours."
+}

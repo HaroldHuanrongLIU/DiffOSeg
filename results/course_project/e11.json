@@ -1,0 +1,313 @@
+{
+  "classification": "paper_budget_with_documented_assumptions",
+  "dataset": "LIDC-IDRI",
+  "dataset_sha256": "6c401c96b0e1737d43fdccfc446cb0c3601473d3b7668ad4a68d22ec0c1ee81b",
+  "folds": [
+    {
+      "fold": 0,
+      "held_out_patients": 54,
+      "stages": {
+        "1": {
+          "cases": 450,
+          "checkpoint_sha256": "ff352518db950e315eb26156a64d754ea46230b9509788ea0eeff1356dfe9aa4",
+          "metrics": {
+            "10": {
+              "Dice_match": 0.8981745488776101,
+              "Dice_max": 0.9020879700448778,
+              "Dice_soft": 0.9001993371645609,
+              "GED": 0.12446288997928301,
+              "GED_empty_match": 0.12446288997928301
+            },
+            "30": {
+              "Dice_match": 0.9112484929296706,
+              "Dice_max": 0.9128196577231089,
+              "Dice_soft": 0.9065125204192268,
+              "GED": 0.11226778331730101,
+              "GED_empty_match": 0.11226778331730101
+            },
+            "50": {
+              "Dice_match": 0.9161479055881501,
+              "Dice_max": 0.917348264058431,
+              "Dice_soft": 0.907474983904097,
+              "GED": 0.10922808873984549,
+              "GED_empty_match": 0.10922808873984549
+            }
+          },
+          "step": 120000
+        },
+        "2": {
+          "cases": 450,
+          "checkpoint_sha256": "7cfa6822b844d86c486730e10746d437a0472fa028b2aa425e5d601bfc4a6456",
+          "metrics": {
+            "Dice_each": [
+              0.8853036590417226,
+              0.8949440107742945,
+              0.8980347524086635,
+              0.8924087723096211
+            ],
+            "Dice_mean": 0.8926727986335754
+          },
+          "step": 90000
+        }
+      }
+    },
+    {
+      "fold": 1,
+      "held_out_patients": 54,
+      "stages": {
+        "1": {
+          "cases": 375,
+          "checkpoint_sha256": "bda060aae42351d1f24b8c3af5f272603c8054d44c0dfe84f85aa3f8288def41",
+          "metrics": {
+            "10": {
+              "Dice_match": 0.8676775224258503,
+              "Dice_max": 0.8778002713421981,
+              "Dice_soft": 0.860862420173486,
+              "GED": 0.16739499597350757,
+              "GED_empty_match": 0.1711283293068409
+            },
+            "30": {
+              "Dice_match": 0.8879694243470828,
+              "Dice_max": 0.8935937321980795,
+              "Dice_soft": 0.8672486574083567,
+              "GED": 0.1534023361783999,
+              "GED_empty_match": 0.15553270654877027
+            },
+            "50": {
+              "Dice_match": 0.8939795696139335,
+              "Dice_max": 0.898584637482961,
+              "Dice_soft": 0.8680354938824971,
+              "GED": 0.15089022571727434,
+              "GED_empty_match": 0.15310142571727434
+            }
+          },
+          "step": 120000
+        },
+        "2": {
+          "cases": 375,
+          "checkpoint_sha256": "2d8a96b922da1d8ad8ed233ffcd1317d6da3dd6d40038792c0ac2dfc8054d3d3",
+          "metrics": {
+            "Dice_each": [
+              0.8406491438796123,
+              0.8510212755997976,
+              0.8582624979813893,
+              0.8491873811086019
+            ],
+            "Dice_mean": 0.8497800746423503
+          },
+          "step": 90000
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "held_out_patients": 53,
+      "stages": {
+        "1": {
+          "cases": 412,
+          "checkpoint_sha256": "9e58af2297e4ad31e54410f4f4868c8b84be9a80d3b207afcdf1e99c056f0c7a",
+          "metrics": {
+            "10": {
+              "Dice_match": 0.9016868849691836,
+              "Dice_max": 0.9053627969425859,
+              "Dice_soft": 0.8953365846708851,
+              "GED": 0.1138435014850885,
+              "GED_empty_match": 0.11391631701906908
+            },
+            "30": {
+              "Dice_match": 0.9147511961535343,
+              "Dice_max": 0.9158159711407227,
+              "Dice_soft": 0.9049474429194498,
+              "GED": 0.10047522275836208,
+              "GED_empty_match": 0.10065861002912799
+            },
+            "50": {
+              "Dice_match": 0.9192198373883673,
+              "Dice_max": 0.9198772956445379,
+              "Dice_soft": 0.9070049353016234,
+              "GED": 0.09714267004288515,
+              "GED_empty_match": 0.09731742732443856
+            }
+          },
+          "step": 120000
+        },
+        "2": {
+          "cases": 412,
+          "checkpoint_sha256": "c495136483ef6746d6768f8636526bf8d8c57d70200b70b07567abc35533a92c",
+          "metrics": {
+            "Dice_each": [
+              0.8836510064152693,
+              0.888383095975495,
+              0.8984696738494252,
+              0.8998143983986772
+            ],
+            "Dice_mean": 0.8925795436597167
+          },
+          "step": 90000
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "held_out_patients": 53,
+      "stages": {
+        "1": {
+          "cases": 372,
+          "checkpoint_sha256": "3b01673c75782d19b4073f97e308823ac83ca118f9ddde9c4aeb49dca805bccc",
+          "metrics": {
+            "10": {
+              "Dice_match": 0.8935421179699642,
+              "Dice_max": 0.8987498651909572,
+              "Dice_soft": 0.8830677222981248,
+              "GED": 0.1290064750443543,
+              "GED_empty_match": 0.12903335676478442
+            },
+            "30": {
+              "Dice_match": 0.9089045039107723,
+              "Dice_max": 0.9106780007000892,
+              "Dice_soft": 0.8957631000888443,
+              "GED": 0.11377817842134652,
+              "GED_empty_match": 0.11378713899482322
+            },
+            "50": {
+              "Dice_match": 0.9138259668183583,
+              "Dice_max": 0.9150719386275097,
+              "Dice_soft": 0.8978843828362804,
+              "GED": 0.11033338358216388,
+              "GED_empty_match": 0.11034628680797033
+            }
+          },
+          "step": 120000
+        },
+        "2": {
+          "cases": 372,
+          "checkpoint_sha256": "c44a627b254b0f461d8ac3d8003bbddda4745cde53b641d559fd766ba1a56268",
+          "metrics": {
+            "Dice_each": [
+              0.8757232708796379,
+              0.8895783160803139,
+              0.8930376236957889,
+              0.8851251291331425
+            ],
+            "Dice_mean": 0.8858660849472207
+          },
+          "step": 90000
+        }
+      }
+    }
+  ],
+  "paper_comparison": {
+    "aggregation": "unweighted mean of four held-out patient folds",
+    "baselines_and_ablations": "not run by this queue",
+    "lidc_stage_1": {
+      "fold_batch_sizes": {
+        "0": 12,
+        "1": 12,
+        "2": 12,
+        "3": 12
+      },
+      "metrics": [
+        {
+          "difference": 0.04213696562055837,
+          "fold_std": 0.020229832813452316,
+          "metric": "GED",
+          "observed": 0.13367696562055836,
+          "paper": 0.09154,
+          "samples": 10
+        },
+        {
+          "difference": -0.02723348392323577,
+          "fold_std": 0.01519991791152034,
+          "metric": "Dice_soft",
+          "observed": 0.8848665160767643,
+          "paper": 0.9121,
+          "samples": 10
+        },
+        {
+          "difference": 0.04268088016885238,
+          "fold_std": 0.01997141560345347,
+          "metric": "GED",
+          "observed": 0.11998088016885237,
+          "paper": 0.0773,
+          "samples": 30
+        },
+        {
+          "difference": -0.02838206979103064,
+          "fold_std": 0.015768390983182633,
+          "metric": "Dice_soft",
+          "observed": 0.8936179302089694,
+          "paper": 0.922,
+          "samples": 30
+        },
+        {
+          "difference": 0.04239859202054222,
+          "fold_std": 0.020295727364266977,
+          "metric": "GED",
+          "observed": 0.11689859202054222,
+          "paper": 0.0745,
+          "samples": 50
+        },
+        {
+          "difference": -0.028600051018875527,
+          "fold_std": 0.016086547099326585,
+          "metric": "Dice_soft",
+          "observed": 0.8950999489811244,
+          "paper": 0.9237,
+          "samples": 50
+        }
+      ],
+      "state": "evaluated_with_documented_assumptions"
+    },
+    "lidc_stage_2": {
+      "fold_batch_sizes": {
+        "0": 12,
+        "1": 12,
+        "2": 12,
+        "3": 12
+      },
+      "metrics": [
+        {
+          "difference": -0.04716822994593939,
+          "fold_std": 0.018080971315646052,
+          "metric": "Dice_A1",
+          "observed": 0.8713317700540606,
+          "paper": 0.9185
+        },
+        {
+          "difference": -0.02051832539252474,
+          "fold_std": 0.017473233979533046,
+          "metric": "Dice_A2",
+          "observed": 0.8809816746074752,
+          "paper": 0.9015
+        },
+        {
+          "difference": -0.026048863016183366,
+          "fold_std": 0.01670034842987487,
+          "metric": "Dice_A3",
+          "observed": 0.8869511369838167,
+          "paper": 0.913
+        },
+        {
+          "difference": -0.025166079762489413,
+          "fold_std": 0.019439609463292075,
+          "metric": "Dice_A4",
+          "observed": 0.8816339202375106,
+          "paper": 0.9068
+        },
+        {
+          "difference": -0.02967537452928426,
+          "metric": "Dice_mean",
+          "observed": 0.8802246254707158,
+          "paper": 0.9099
+        }
+      ],
+      "state": "evaluated_with_documented_assumptions"
+    },
+    "paper": "https://arxiv.org/abs/2507.13087v2",
+    "scope": "LIDC only; NPC and other paper experiments not run"
+  },
+  "resume": "RNG restored but data-loader stream is not bitwise identical after resume",
+  "scope": "Main model on LIDC; not NPC, other baselines or ablations",
+  "source_id": "123ec5e3e32db0bf1e36c86a7e754b91ffc3309128171fbd5c6f12b2ac7de501",
+  "stage_ii_90000": "Interpretation of paper's printed 9,0000; not author-confirmed"
+}

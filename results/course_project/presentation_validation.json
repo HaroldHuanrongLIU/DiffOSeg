@@ -1,0 +1,122 @@
+{
+  "slide_count": 14,
+  "layout": "16:9 UM university theme",
+  "pptx_kind": "full-slide raster images; edit Typst source",
+  "source_sha256": "a53e349aac49439bc4d9f144e4d22c6610d001b3493e2a313d5869ec25db38f8",
+  "pptx_sha256": "1febe7fac5607775bf4f141450a59b40a2f9fb3b9cafe706f07e8060c48ae946",
+  "comparison": "same-source direct PNG at 144 PPI",
+  "slides": [
+    {
+      "slide": 1,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 2,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 3,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 4,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 5,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 6,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 7,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 8,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 9,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 10,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 11,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 12,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 13,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    },
+    {
+      "slide": 14,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
+    }
+  ]
+}

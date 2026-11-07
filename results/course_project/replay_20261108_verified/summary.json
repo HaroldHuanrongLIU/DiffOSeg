@@ -1,0 +1,105 @@
+{
+  "executed_at_utc": "2026-11-07T20:49:15.650543+00:00",
+  "executor": "Codex, delegated by user",
+  "scope": "Full metric/statistical replay of six frozen P/A prediction banks",
+  "training": "NOT_RUN",
+  "model_inference": "NOT_RUN",
+  "independent_classmate": false,
+  "dataset_sha256": "6c401c96b0e1737d43fdccfc446cb0c3601473d3b7668ad4a68d22ec0c1ee81b",
+  "source_sha256": "366a08fb21785a58471d409cf1e47a7c6ee67f4549283d49ba382aa6da4663f2",
+  "python": "3.11.15",
+  "numpy": "1.26.4",
+  "runs": [
+    {
+      "condition": "P",
+      "seed": 20261,
+      "cases": 450,
+      "checkpoint_sha256": "d870d58d1afe3beccba9f3724a4299ade50ba2dba08f3498aedb197158fe79a2",
+      "recomputed_mean": [
+        0.10335559424426821,
+        0.9039058800935746
+      ]
+    },
+    {
+      "condition": "P",
+      "seed": 20262,
+      "cases": 450,
+      "checkpoint_sha256": "fb6860b89302c1691f015604c99a01aeedd52bdf95441f138f1355379ceccfb6",
+      "recomputed_mean": [
+        0.10469966158270835,
+        0.9030725948181415
+      ]
+    },
+    {
+      "condition": "P",
+      "seed": 20263,
+      "cases": 450,
+      "checkpoint_sha256": "fd375d45fe706e441467fb31b4ed362a8bf9997fff0523cb04f394d8e915287b",
+      "recomputed_mean": [
+        0.10477332342002127,
+        0.9024377126428813
+      ]
+    },
+    {
+      "condition": "A",
+      "seed": 20261,
+      "cases": 450,
+      "checkpoint_sha256": "084234ad4b6706d688e917f74592c5bc15aed4bf18969f6cc45738f7ae588039",
+      "recomputed_mean": [
+        0.1016228038403723,
+        0.9037364841765836
+      ]
+    },
+    {
+      "condition": "A",
+      "seed": 20262,
+      "cases": 450,
+      "checkpoint_sha256": "105159c33ab06aef6d941593968cb2b11170a6ee56d03562c64d7fb2ddbea70e",
+      "recomputed_mean": [
+        0.10773212691148122,
+        0.9006449503666837
+      ]
+    },
+    {
+      "condition": "A",
+      "seed": 20263,
+      "cases": 450,
+      "checkpoint_sha256": "85bac9bffd85f00626c8d39c01e2a3a0dc44517207fd0e09606f669a2190fdd3",
+      "recomputed_mean": [
+        0.10371882756551107,
+        0.9015755740735266
+      ]
+    }
+  ],
+  "case_groups": 2700,
+  "generated_masks_scored": 81000,
+  "maximum_metric_error": 0.0,
+  "float64_diagnostic_max_difference": 2.01230581975409e-07,
+  "metric_precision": "Integer intersections; primary uses frozen float32 division/means, with separate float64 diagnostic",
+  "P_mean": [
+    0.10427619308233262,
+    0.9031387291848669
+  ],
+  "A_mean": [
+    0.10435791943912152,
+    0.9019856695389306
+  ],
+  "difference": [
+    -8.172635678891782e-05,
+    0.0011530596459353418
+  ],
+  "difference_ci95": [
+    [
+      -0.005397062606939493,
+      0.005440307374603567
+    ],
+    [
+      -0.0022915793836815837,
+      0.004960256549276566
+    ]
+  ],
+  "decision": "inconclusive",
+  "bootstrap_replicates": 10000,
+  "elapsed_seconds": 13.259970581973903,
+  "case_csv_sha256": "e744fa27236aa55c4751e9aff9955a4b2b5f0abb0385c721912c89695b2d7d9d"
+}

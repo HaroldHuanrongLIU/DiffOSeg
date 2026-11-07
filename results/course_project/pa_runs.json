@@ -1,0 +1,140 @@
+[
+  {
+    "condition": "P",
+    "seed": 20261,
+    "steps": 120000,
+    "batch_size": 12,
+    "cases": 450,
+    "checkpoint_sha256": "d870d58d1afe3beccba9f3724a4299ade50ba2dba08f3498aedb197158fe79a2",
+    "config_sha256": "188c21f47e7b08839d9ab41a1c5e82139854083a59f3b7d743262885afeafaed",
+    "initialization_sha256": [
+      "7635ebad6575105086cc3565a30ad436eed324a534fca6ced8a5a5bf3840325b",
+      "65816719723e288e5829b33783295dbb12372ab89c811845f0d9a7d97057edea"
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "torch": "2.14.0+cu132",
+    "source_id": "80687fd71f61ed61a4feff3ef8583e3cc3a3e1b0c2c39006a3fc67052a4b6eb5",
+    "metrics": {
+      "Dice_match": 0.897484354045656,
+      "Dice_max": 0.8993332305881712,
+      "Dice_soft": 0.9039058800935745,
+      "GED": 0.10335559424426821,
+      "GED_empty_match": 0.10335559424426821
+    }
+  },
+  {
+    "condition": "P",
+    "seed": 20262,
+    "steps": 120000,
+    "batch_size": 12,
+    "cases": 450,
+    "checkpoint_sha256": "fb6860b89302c1691f015604c99a01aeedd52bdf95441f138f1355379ceccfb6",
+    "config_sha256": "c7c794638eac47ae7f984c187ee444a63f6747e81ab494bba7c131b728e70bc1",
+    "initialization_sha256": [
+      "6db72416e2b4d84c3c3c116c9e9d34c03ad78cf1eb412e41da790476d07864af",
+      "addf10a9676a7d42b7cdfcab87deae428b5f661af8902d466d76304c7b7e917c"
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "torch": "2.14.0+cu132",
+    "source_id": "80687fd71f61ed61a4feff3ef8583e3cc3a3e1b0c2c39006a3fc67052a4b6eb5",
+    "metrics": {
+      "Dice_match": 0.8977037217881945,
+      "Dice_max": 0.8994641168912252,
+      "Dice_soft": 0.9030725948181417,
+      "GED": 0.10469966158270835,
+      "GED_empty_match": 0.10469966158270835
+    }
+  },
+  {
+    "condition": "P",
+    "seed": 20263,
+    "steps": 120000,
+    "batch_size": 12,
+    "cases": 450,
+    "checkpoint_sha256": "fd375d45fe706e441467fb31b4ed362a8bf9997fff0523cb04f394d8e915287b",
+    "config_sha256": "09fa473ca6619723ab3dba8c46d13fdf4a7fb210fbb8714e97a2b4a42fc787a7",
+    "initialization_sha256": [
+      "1e7e74061eec15cdf4ca0ae6ebc6e4fc3b4b652d31c8610115874f11b31aa035",
+      "5c61fd98a8b179dcd194999b23901549e5a04565febc5c3f85226cb05553ca90"
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "torch": "2.14.0+cu132",
+    "source_id": "80687fd71f61ed61a4feff3ef8583e3cc3a3e1b0c2c39006a3fc67052a4b6eb5",
+    "metrics": {
+      "Dice_match": 0.8975768156846364,
+      "Dice_max": 0.8994435821639167,
+      "Dice_soft": 0.9024377126428818,
+      "GED": 0.10477332342002127,
+      "GED_empty_match": 0.10477332342002127
+    }
+  },
+  {
+    "condition": "A",
+    "seed": 20261,
+    "steps": 120000,
+    "batch_size": 12,
+    "cases": 450,
+    "checkpoint_sha256": "084234ad4b6706d688e917f74592c5bc15aed4bf18969f6cc45738f7ae588039",
+    "config_sha256": "a0fc558f2c82874a4f0d27b892e58e146f5645bb966e11d9b7dabeb24932b9fa",
+    "initialization_sha256": [
+      "7635ebad6575105086cc3565a30ad436eed324a534fca6ced8a5a5bf3840325b",
+      "65816719723e288e5829b33783295dbb12372ab89c811845f0d9a7d97057edea"
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "torch": "2.14.0+cu132",
+    "source_id": "80687fd71f61ed61a4feff3ef8583e3cc3a3e1b0c2c39006a3fc67052a4b6eb5",
+    "metrics": {
+      "Dice_match": 0.8783346009254456,
+      "Dice_max": 0.8798089708884557,
+      "Dice_soft": 0.9037364841765828,
+      "GED": 0.1016228038403723,
+      "GED_empty_match": 0.1016228038403723
+    }
+  },
+  {
+    "condition": "A",
+    "seed": 20262,
+    "steps": 120000,
+    "batch_size": 12,
+    "cases": 450,
+    "checkpoint_sha256": "105159c33ab06aef6d941593968cb2b11170a6ee56d03562c64d7fb2ddbea70e",
+    "config_sha256": "581f97cb19586e34b43eb568cd7b1fbfceb4ba42251b6d792d6b7bc4d2ee4185",
+    "initialization_sha256": [
+      "6db72416e2b4d84c3c3c116c9e9d34c03ad78cf1eb412e41da790476d07864af",
+      "addf10a9676a7d42b7cdfcab87deae428b5f661af8902d466d76304c7b7e917c"
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "torch": "2.14.0+cu132",
+    "source_id": "80687fd71f61ed61a4feff3ef8583e3cc3a3e1b0c2c39006a3fc67052a4b6eb5",
+    "metrics": {
+      "Dice_match": 0.8772582674026489,
+      "Dice_max": 0.8785359050830205,
+      "Dice_soft": 0.9006449503666824,
+      "GED": 0.10773212691148122,
+      "GED_empty_match": 0.10773212691148122
+    }
+  },
+  {
+    "condition": "A",
+    "seed": 20263,
+    "steps": 120000,
+    "batch_size": 12,
+    "cases": 450,
+    "checkpoint_sha256": "85bac9bffd85f00626c8d39c01e2a3a0dc44517207fd0e09606f669a2190fdd3",
+    "config_sha256": "c7709613f230135dee769c5f0dcac54c717c7e10859777e684bab5d01d14ba1d",
+    "initialization_sha256": [
+      "1e7e74061eec15cdf4ca0ae6ebc6e4fc3b4b652d31c8610115874f11b31aa035",
+      "5c61fd98a8b179dcd194999b23901549e5a04565febc5c3f85226cb05553ca90"
+    ],
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "torch": "2.14.0+cu132",
+    "source_id": "80687fd71f61ed61a4feff3ef8583e3cc3a3e1b0c2c39006a3fc67052a4b6eb5",
+    "metrics": {
+      "Dice_match": 0.8786467305819193,
+      "Dice_max": 0.879888991382387,
+      "Dice_soft": 0.9015755740735267,
+      "GED": 0.10371882756551107,
+      "GED_empty_match": 0.10371882756551107
+    }
+  }
+]
