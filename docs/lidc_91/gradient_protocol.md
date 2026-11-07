@@ -1,0 +1,9 @@
+# Shared-gradient projection for the four preference targets
+
+A diagnostic using fitting patients only examined 16 minibatches in each of folds 0 and 1. In fold 1, A2 versus A4 gradients in shared parameters had negative inner product in 11 of 16 minibatches. Their average cosine was -0.0130. Auxiliary-loss gradients had positive mean cosine with every rank. These observations motivate a matched optimization experiment.
+
+Initialize from the existing fold-specific aligned inner U-Net after its 6000 updates. Compare 4000 additional ordinary updates with 4000 PCGrad updates. Keep the same training cases, labels, augmentation, patient sampling, batch 20, seeds 77171+fold, AdamW, cosine schedule (learning rate 0.00012, 100-step warmup, weight decay 0.0001) and EMA. Compute four separate preference-loss gradients on shared network parameters. In random per-task order, project a task gradient only when its inner product with another task gradient is negative. Average the projected gradients. Preserve the original averaged task-head gradients and the original auxiliary gradient, which includes the vote, distance, area and centroid terms. Use a separate RNG for projection permutations so it cannot alter sampled images or augmentation.
+
+The algorithm follows Yu et al., Gradient Surgery for Multi-Task Learning, NeurIPS 2020, https://arxiv.org/abs/2001.06782. This study tests its use for area-ranked LIDC preference supervision. First run a paired fold-1 pilot on E11, where the matching initialization already exists. A pilot result supplies evidence for further four-fold work. It cannot establish a 91% result.
+
+For checking, apply the frozen aligned inference views with the existing image-derived centers. Fit one mixture weight with the fixed incumbent on library patients, save it, then score the separate check patients. Use the original four-fold acceptance metric. Keep all failed pilots, controls, exact source, dataset and checkpoint identities.

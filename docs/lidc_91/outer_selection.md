@@ -1,0 +1,7 @@
+# Amendment before outer inference: fold-local architecture selection
+
+This amendment supersedes only the global architecture choice and global promotion gate in outer_protocol.md. The initial protocol used a four-fold mean advantage and a count of improving folds. Inner checking patients from another fold can also belong to the current outer test set. A pooled architecture decision could therefore let another fold's check labels affect the current fold's choice. No new outer model prediction or score has been opened. The already known CT-adapter result at registration was fold 0. The OOF teacher design is independent of this amendment.
+
+Lock each fold independently. Use that fold's own original training patients only. Select its native CT adapter if its inner check Dice exceeds the ordinary adapted tail by at least 0.00030, otherwise use the ordinary adapted tail. Transfer the selected model's existing library-fitted weight for that fold. Record the four choices and all underlying receipts before any new outer inference. Run and score every original outer fold, including folds whose local method is close to the incumbent. The aggregate target is still the unrounded equal-fold mean at least 0.910000. This is one fixed pipeline with fold-local training and selection.
+
+The earlier protocol remains available to document its timing and the superseded rule. Historical results on this same cohort remain known, so the final report is repeated-cohort evidence.

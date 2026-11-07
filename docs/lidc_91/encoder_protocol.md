@@ -1,0 +1,11 @@
+# LIDC single-slice encoder adaptation
+
+The target remains an unrounded original four-fold preference Dice of at least 0.910000. The frozen outer reference is preference90_comparisonb/assessment/preference_report.json, SHA-256 2024e556c9cf003d037701d458d2da3eb527deb0192bf8666cf8383651a220d0. The completed 512-pixel SAM candidate has inner mean 0.9049478248565849, against the incumbent inner mean 0.9041922413228606.
+
+Test adaptation of the original SA-1B ViT-B image representation with only existing LIDC training annotations. Fix the first eight image-encoder blocks and cache their deterministic, single-image outputs at 512 pixels for the same four rotations and CT windows. Check the split encoder numerically against the complete official encoder before fitting. Public initialization, training-fold registration, patient splits and automatic CT-derived prompts are the existing frozen definitions.
+
+Initialize each fold's prompt decoder from its completed 5000-update inner SAM fit, after checking training-patient identity and checkpoint hash. Continue for 5000 updates with batch 12, seed 60171+fold, the existing segmentation, raw-decoder and radius losses, and EMA. Compare a frozen-encoder control against a candidate that tunes the last four encoder blocks and the convolutional neck. Use the same sampling and augmentation sequence for both. Decoder learning rate is 0.00008, encoder learning rate is 0.00002, cosine decay with 80-step warmup. Encoder weight decay is 0.003, decoder weight decay 0.0002. Freeze all candidate settings before reading their check scores.
+
+Training guides come from the already verified patient-out-of-fit teacher predictions. The model sees a guide and the current CT at inference. Fit a blend with the incumbent over weights 0, 0.25, 0.5, 0.75, 1 on library patients. Save the choice before scoring the separate check patients. Report both controls across all four inner folds, including negative outcomes. These checks are part of repeated-cohort development. A new outer experiment requires a locked full training and evaluation procedure; success still requires the original four-fold result and independent mask-based verification.
+
+Persist all trained states and identities. Synchronize method source and public runtime code to Lakers, E11 and N21. Keep new predictions and scores on Lakers.

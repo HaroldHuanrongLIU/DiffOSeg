@@ -28,6 +28,24 @@ Specify parameters such as stage in params_eval.yml
 python ddpm_eval.py  --params params_eval.yml --gpu gpu_id
 ```
 
+## LIDC reproduction and experiment archive
+
+- [Baseline-to-best result summary (Chinese)](docs/lidc_reproduction_to_best.md)
+- [E11 reproduction protocol and documented assumptions](docs/e11_lidc.md)
+- [Subsequent experiment records and negative results (Chinese)](docs/lidc_91/results.md)
+
+These extension experiments are reported separately from the original paper.
+The records identify the frozen run artifacts required for replay; datasets,
+pretrained weights, trained checkpoints, and prediction arrays are not included
+in this source archive.
+
+Run the repository's unit tests with:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=1 \
+  .venv/bin/python -B -m unittest discover -s tests -v
+```
+
 ## Citation
 If you found this repository useful to you, please consider giving a star ⭐️ and citing our paper:
 ```

@@ -1,0 +1,7 @@
+# Original SAM resolution ablation
+
+Compare 1024-pixel and 512-pixel encodings of the same original LIDC CT slice. The 512-pixel study is complete on all four inner checks before this experiment. Its mean Dice is 0.9049478248565849, versus the fixed incumbent inner mean 0.9041922413228606. The outer checkpoint remains the frozen 90.3481% study.
+
+Use the same original SA-1B ViT-B checkpoint and frozen encoder, four rotations/CT windows, genuine patient-out-of-fit CT guides, 5000 fixed decoder updates, batch 12, seeds 50171+fold, EMA and losses. At 1024 pixels retain the pretrained absolute-position grid. Scale the automatically predicted box and dense mask to the official prompt input sizes. Bring decoder features and logits to the native 128-pixel grid before the existing CT detail head and supervision. Thus this experiment changes the encoder spatial sampling and corresponding prompt geometry. No new image, annotation, manual prompt or medical pretraining enters.
+
+The reference and 512-pixel checkpoints remain frozen. Fit the same five blend candidates only on inner library patients, then score on separate inner check patients. Complete all four checks and report raw and fused scores. Record public weight, runtime source, source snapshot, dataset and cache hashes. The known inner check patients have been used across development iterations, so these are development findings. No new outer test scoring is authorized by a passing inner score alone: first freeze the final candidate and exact original patient-fold inference and verification procedure.

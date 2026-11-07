@@ -1,0 +1,7 @@
+# Single-slice component and hole control
+
+Fold-0 inner fitting annotations contain 3812 rank masks. Exactly 3711 have one 8-connected foreground component and 3757 have no enclosed background component. A visual audit of four distinct inner check patients with the lowest incumbent Dice shows some extra foreground islands and overestimated areas. This motivates a bounded geometric control on the frozen incumbent masks.
+
+Retain foreground components whose area is at least a fixed fraction of the largest component. Test fractions 0, 0.05, 0.15, 1; zero preserves all components. Fill only background components disconnected from the image border, with area at most 0, 4, 16 or 16384 native pixels. Preserve ties in foreground-component size. Select one common pair per fold on the existing library patients, write the choice, then score the existing separate inner check patients. Include the original masks among the candidates. Use actual packed incumbent masks from the verified single-slice cache. Report all failures and patient-count identities.
+
+The current CT pipeline generates each mask independently. This control uses only that mask. Medical supervision and all new checks remain within existing LIDC training patients. The formal goal still requires the original four-fold unrounded preference Dice >=0.91. Any future composition with SAM requires its own locked selection procedure.
