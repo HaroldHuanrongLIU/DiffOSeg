@@ -1,6 +1,6 @@
 # Consequential coding-agent use
 
-Updated 2026-11-08. The user delegated technical checking to Codex, assigned team responsibilities at 30:30:40 and reported teacher confirmation. This ledger names the actual executor rather than presenting an agent run as a member's manual action.
+Updated 2026-11-11. The user delegated technical checking to Codex, assigned team responsibilities at 30:30:40 and reported teacher confirmation. This ledger names the actual executor rather than presenting an agent run as a member's manual action.
 
 Tool: Codex in the desktop app. Exact model snapshot/version and sampling settings were not exposed in the visible task record. No token/cost estimate is inferred.
 
@@ -10,6 +10,7 @@ Tool: Codex in the desktop app. Exact model snapshot/version and sampling settin
 | 2026-11-08 / implementation and validation | Build evidence package, CPU checks, report and slides | Scripts and deliverables prepared; original experiments preserved | validation.json: smoke, tests, source checks, PDF/PPTX review | User selected template, supplied authors and delegated checking |
 | 2026-11-08 / analysis and critical review | Separate P/A, consensus extensions and preference result | Inconclusive P/A outcome retained; scope limits disclosed | Numeric and source evidence, including original 19308-score preference audit | Teacher confirmation recorded from the user's statement |
 | 2026-11-08 / requested results replay | Recompute all saved P/A masks and bootstrap | Full metric/statistical replay completed | replay_20261108_verified/summary.json: 2700 case groups, 81000 predictions, exact frozen-precision agreement | Executed by Codex at the user's request; no manual member or independent-classmate execution is claimed |
+| 2026-11-11 / presentation revision | Restructure the English slides into the approved 15-page narrative, retaining the UM template | Paper/problem context added; P/A, v4 and preference evidence remain separate; no experiment or scientific result changed | 15-page PDF visual review; 15 PPTX slide images match same-source renders; evidence smoke passed; presentation_validation.json | User explicitly requested the 15-page rebuild and PDF/PPTX; Codex performed the artifact checks |
 
 ## Critical-review episodes
 

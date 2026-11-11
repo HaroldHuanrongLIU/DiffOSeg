@@ -1,10 +1,32 @@
 {
-  "slide_count": 14,
-  "layout": "16:9 UM university theme",
+  "date": "2026-11-11",
+  "slide_count": 15,
+  "pdf_page_count": 15,
+  "layout": "16:9 UM university theme; white backgrounds; top-right UM logo",
   "pptx_kind": "full-slide raster images; edit Typst source",
-  "source_sha256": "a53e349aac49439bc4d9f144e4d22c6610d001b3493e2a313d5869ec25db38f8",
-  "pptx_sha256": "1febe7fac5607775bf4f141450a59b40a2f9fb3b9cafe706f07e8060c48ae946",
-  "comparison": "same-source direct PNG at 144 PPI",
+  "source_sha256": "f157528e53c5029bc2426a3387b0cfc4c84c9ad4d36bb62ee6943b9eefc71c74",
+  "pdf_sha256": "8e181393f2702cc54d4c644def9c381e92e43f4afbbd2dbe44173d390f720ca2",
+  "pptx_sha256": "3eff643c62226166a8d31ae6689ea70e78511f7dfa190386948f7f28fb23f199",
+  "comparison": "same-source direct PNG at 144 PPI; slide order resolved through OOXML relationships",
+  "package_xml_and_crc": "PASS",
+  "pdf_text_within_page_bounds": true,
+  "pdf_word_count": 1138,
+  "page_numbering": "2/15 through 15/15; cover included in total",
+  "visual_review": "Simplified evidence statement on page 13 visually inspected; the other 14 pages are pixel-identical to the previous deck; no unintended clipping or overlap",
+  "evidence_smoke": {
+    "command": "python3 -B scripts/check_course_project.py",
+    "date": "2026-11-11",
+    "status": "PASS",
+    "runs": 6,
+    "records": 2700,
+    "patient_clusters": 54,
+    "decision": "inconclusive"
+  },
+  "powerpoint_application_opened": false,
+  "chart_inputs": {
+    "results/course_project/pa_results.json": "e81bfc1017529f3bf43846064b0222649a1495463c77be7710c3bfba1761c843",
+    "results/course_project/formal_e.json": "7131bf880b3fb533bfea48172a2de6e2901697198b74f9c8367a51af1cb19c44"
+  },
   "slides": [
     {
       "slide": 1,
@@ -117,6 +139,148 @@
         1684,
         947
       ]
+    },
+    {
+      "slide": 15,
+      "pixels_equal": true,
+      "size": [
+        1684,
+        947
+      ]
     }
-  ]
+  ],
+  "cover_revision": {
+    "removed": [
+      "CISC8006 \u00b7 Claim reproduction and controlled extensions",
+      "University of Macau author affiliations"
+    ],
+    "unchanged_body_slides": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "framework_spacing_revision": {
+    "slide": 3,
+    "column_gutter_pt": 32,
+    "figure_viewport_width_pt": 510,
+    "other_slides_unchanged": true
+  },
+  "footer_revision": {
+    "text": "E11-1049",
+    "pages": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "cover_and_other_regions_unchanged": true
+  },
+  "table_alignment_revision": {
+    "alignment": "horizontal center; cell text remains left aligned",
+    "pages": [
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      13,
+      14
+    ],
+    "text_unchanged": true,
+    "non_table_pages_unchanged": true,
+    "centering_measurements": [
+      {
+        "slide": 5,
+        "left_px": 259,
+        "right_px": 1425,
+        "center_error_px": 0.0
+      },
+      {
+        "slide": 6,
+        "left_px": 335,
+        "right_px": 1349,
+        "center_error_px": 0.0
+      },
+      {
+        "slide": 7,
+        "left_px": 470,
+        "right_px": 1214,
+        "center_error_px": 0.0
+      },
+      {
+        "slide": 9,
+        "left_px": 239,
+        "right_px": 1444,
+        "center_error_px": 0.5
+      },
+      {
+        "slide": 10,
+        "left_px": 148,
+        "right_px": 1535,
+        "center_error_px": 0.5
+      },
+      {
+        "slide": 11,
+        "left_px": 451,
+        "right_px": 1233,
+        "center_error_px": 0.0
+      },
+      {
+        "slide": 13,
+        "left_px": 162,
+        "right_px": 1522,
+        "center_error_px": 0.0
+      },
+      {
+        "slide": 14,
+        "left_px": 101,
+        "right_px": 1583,
+        "center_error_px": 0.0
+      }
+    ]
+  },
+  "baseline_name_revision": {
+    "display_name": "Reproduced DiffOSeg",
+    "pages": [
+      9,
+      12
+    ],
+    "chart_label": "Reproduced\nDiffOSeg",
+    "room_footer": "E11-1049",
+    "frozen_evidence_key": "e11",
+    "chart_inputs_unchanged": true
+  },
+  "evidence_summary_revision": {
+    "page": 13,
+    "statement": "Reported results are traceable; evidence checks passed.",
+    "command_and_replay_counts": "retained in docs/course_project/defense.md as optional Q&A reference",
+    "other_pages_unchanged": true
+  },
+  "publication_check": {
+    "svg_trailing_whitespace_removed": true,
+    "all_15_slides_pixel_identical_to_approved_deck": true
+  }
 }

@@ -16,8 +16,8 @@ At the user's request, **Codex performs the delegated technical checks**. Execut
 
 ## Planned presentation allocation
 
-- Keru ZHENG: claim, method and protocol; approximately 4.5 minutes.
-- Yanchen MU: results, uncertainty and diagnosis; approximately 4.5 minutes.
-- Huanrong LIU: improvements, controls, reproducibility and conclusions; approximately 6 minutes.
+- Keru ZHENG: slides 1–5, problem, paper, P/A mechanism and claim; approximately 4.5 minutes.
+- Yanchen MU: slides 6–8, protocol, results, uncertainty and diagnosis; approximately 4.5 minutes.
+- Huanrong LIU: slides 9–15, improvements, controls, evidence, limits and conclusions; approximately 6 minutes.
 
 This is a speaking plan totaling 15 minutes, not a record that the presentation has already occurred.

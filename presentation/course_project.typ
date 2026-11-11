@@ -4,10 +4,6 @@
 #import "../templates/UM_Typst_Template/UM_Slide_Typst_Template/tokens.typ": *
 #import "../templates/UM_Typst_Template/UM_Slide_Typst_Template/components.typ": *
 
-#let template-copyright-holder = [HUANRONG LIU]
-#let template-copyright-year = "2026"
-#let template-license-url = "https://creativecommons.org/licenses/by/4.0/"
-
 #let um-corner-logo = place(
   top + right,
   dx: 0pt - logo-layout.right,
@@ -18,8 +14,6 @@
 
 #let title-layout = (
   author-gap: 1.5em,
-  institution-gap: .2em,
-  institution-size: .9em,
 )
 
 #show: university-theme.with(
@@ -30,15 +24,13 @@
     text(size: 1.1em, utils.display-current-heading(level: 1))
       + h(logo-layout.width + logo-layout.right + space-sm)
   ),
-  footer-a: [
-    © #template-copyright-year #template-copyright-holder · #link(template-license-url)[CC BY 4.0]
-  ],
+  footer-a: [E11-1049],
   footer-c: self => {
     set text(fill: um-blue)
     h(1fr)
     utils.display-info-date(self)
     h(1fr)
-    context utils.slide-counter.display() + " / " + utils.last-slide-number
+    context str(counter(page).get().first() + 1) + " / " + str(counter(page).final().first() + 1)
     h(1fr)
   },
   config-page(fill: white, foreground: um-corner-logo),
@@ -53,23 +45,16 @@
   config-info(
     title: [DiffOSeg: Consensus and Preference],
     short-title: [DiffOSeg course project],
-    subtitle: [CISC8006 · Claim reproduction and controlled extensions],
+    subtitle: none,
     author: [Keru ZHENG, Yanchen MU, Huanrong LIU],
     authors: grid(
       columns: (auto, auto, auto),
       column-gutter: title-layout.author-gap,
-      ..(
-        ([Keru ZHENG], [University of Macau]),
-        ([Yanchen MU], [University of Macau]),
-        ([Huanrong LIU], [University of Macau]),
-      ).map(((author, institution)) => [
-        #set align(center)
-        #author
-        #v(title-layout.institution-gap)
-        #text(size: title-layout.institution-size, institution)
-      ]),
+      [Keru ZHENG],
+      [Yanchen MU],
+      [Huanrong LIU],
     ),
-    date: datetime(year: 2026, month: 11, day: 8),
+    date: datetime(year: 2026, month: 11, day: 11),
     institution: [CISC8006 Advanced Machine Learning],
     contact: none,
     logo: none,
@@ -79,159 +64,269 @@
 #set heading(numbering: numbly("{1}.", default: "1.1"))
 
 
-#import "../report/shared.typ": course-table, tables
+#import "../report/shared.typ": course-table
+
+#show table: it => align(center, it)
+#set table(align: left)
+
+// Values remain linked to the frozen evidence; no experiment is rerun here.
+#let pa = json("../results/course_project/pa_results.json").primary
+#let v4 = json("../results/course_project/v4.json").metrics
+#let fmt(value, digits: 4) = {
+  let parts = str(calc.round(value, digits: digits)).split(".")
+  let decimals = parts.at(1, default: "")
+  parts.first() + "." + decimals + "0" * (digits - decimals.len())
+}
 
 #title-slide()
 
-= Original claim
+= Paper and problem
 
-== Claim and decision
+== Multi-rater segmentation
 
-#text(size: 1.3em, weight: "bold", fill: um-blue)[Does probabilistic consensus outperform averaging?]
-#v(.8em)
-Stage I · LIDC-IDRI · one patient fold · three paired seeds
+#let example-layout = (width: 720pt, height: 155pt, image-width: 1600pt, dx: -60pt, dy: -5pt)
+#align(center)[
+  #box(width: example-layout.width, height: example-layout.height, clip: true)[
+    #align(top + left)[
+      #move(dx: example-layout.dx, dy: example-layout.dy)[
+        #image("assets/diffoseg-paper-consensus.png", width: example-layout.image-width, height: example-layout.image-width * 9 / 16, fit: "stretch")
+      ]
+    ]
+  ]
+]
+#v(.35em)
+#align(center)[#text(size: 18pt)[One CT patch · four expert annotations]]
 #v(.7em)
-- GED30 should decrease
-- DiceSoft30 should increase
-- Both paired 95% intervals must support the expected directions
+#two-column(gutter: 1.8em, alignment: top)[
+  #text(fill: um-blue, weight: "bold")[Consensus]
+  #v(.3em)
+  Which segmentation patterns are shared, and where do annotations disagree?
+][
+  #text(fill: um-blue-light, weight: "bold")[Preference]
+  #v(.3em)
+  How can a prediction reflect a particular annotation style?
+]
 
-#v(.7em)
-*Observed outcome: inconclusive*
+== DiffOSeg in two stages
 
-== Consensus strategies
+#let framework-layout = (
+  left-width: 510pt,
+  right-width: 1fr,
+  gutter: 32pt,
+  width: 510pt,
+  height: 294pt,
+  image-width: 742.6pt,
+)
+#two-column(left-width: framework-layout.left-width, right-width: framework-layout.right-width, gutter: framework-layout.gutter)[
+  #box(width: framework-layout.width, height: framework-layout.height, clip: true)[
+    #align(top + left)[
+      #image("assets/diffoseg-paper-framework.png", width: framework-layout.image-width, height: framework-layout.image-width * 9 / 16, fit: "stretch")
+    ]
+  ]
+][
+  #set text(size: 19pt)
+  #text(fill: um-blue, weight: "bold")[Stage I]
+  #v(.2em)
+  Image-conditioned categorical diffusion learns a distribution of masks.
+  #v(.7em)
+  #text(fill: um-blue-light, weight: "bold")[Stage II]
+  #v(.2em)
+  Initialize from Stage I; add adaptive preference prompts.
+  #v(.7em)
+  *Our target:* the Stage I consensus strategy.
+]
 
-#two-column(left-width: 1fr, right-width: 1fr, gutter: 1.5em)[
+== P versus A
+
+#two-column(gutter: 1.8em)[
   #text(fill: um-blue, weight: "bold")[P: probabilistic consensus]
+  #v(.5em)
+  Choose 1–4 annotations, then average the selected subset.
   #v(.6em)
-  Sample 1–4 annotators, choose a subset uniformly and average its masks.
+  $z_P = frac(1, abs(S)) sum_(j in S) z_j$
+  #v(.4em)
+  The training target changes with the subset.
 ][
   #text(fill: um-blue-light, weight: "bold")[A: average aggregation]
+  #v(.5em)
+  Average all four annotations on every visit.
   #v(.6em)
-  Average all four annotation masks.
+  $z_A = 1 / 4 sum_(j=1)^4 z_j$
+  #v(.4em)
+  The consensus probabilities stay fixed.
 ]
-#v(1em)
-Both conditions share architecture, training budget, augmentation and paired initialization.
-#v(.6em)
-The frozen implementation samples a categorical target from the consensus probabilities.
-
-== Frozen comparison
-
-#course-table(("Item", "Setting"), (
- ("Held-out data", "54 patients, 450 patches"),
- ("Training data", "160 patients"),
- ("Paired seeds", "20261, 20262, 20263"),
- ("Training", "120000 updates each, batch 12"),
- ("Diffusion / evaluation", "250 cosine steps / 30 samples"),
- ("Recorded compute", "12.157 GPU-hours on one RTX 5090"),
-), size: 17pt, inset: 6pt)
-#v(.6em)
-Local protocol freeze precedes this P/A comparison. Earlier P-only runs had examined these patients.
-
-== Three paired seeds
-
-#course-table(("Seed", "P GED30", "A GED30", "P DS30 (%)", "A DS30 (%)"), tables.pa, size: 16pt, inset: 6pt)
 #v(.8em)
-P's GED improves in one seed and worsens in two.
+#text(size: 18pt)[Frozen local choices: uniform subset size and subset; per-pixel categorical target draws in both arms. These operational details are disclosed assumptions.]
+
+= Claim reproduction
+
+== Claim and metrics
+
+#text(size: 24pt, weight: "bold", fill: um-blue)[Does P outperform A on LIDC-IDRI?]
 #v(.4em)
-DiceSoft has the expected ordering in all three seeds.
-
-== Paired uncertainty
-
-#course-table(("P minus A", "Mean change", "Paired 95% interval"), (
- ("GED30", "−0.000082", "[−0.005397, +0.005440]"),
- ("DiceSoft30", "+0.1153 pp", "[−0.2292, +0.4960] pp"),
-), size: 18pt, inset: 8pt)
-#v(.9em)
-Both intervals include zero.
+Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 #v(.6em)
-10,000 paired seed-by-patient bootstrap draws retain every patch of each sampled patient.
+#course-table(("Endpoint", "What it measures", "Expected change"), (
+  ("GED30", "Mismatch between mask distributions", "P − A < 0"),
+  ("DiceSoft30", "Threshold-aware overlap of mean masks", "P − A > 0"),
+), size: 19pt, inset: 7pt)
+#v(.45em)
+#text(size: 18pt)[30 = generated masks per image. DiceSoft uses five thresholds.]
+#v(.5em)
+#text(size: 19pt)[
+  *Supported:* both paired 95% intervals favor P. \
+  *Not supported:* either metric is significantly reversed. \
+  *Inconclusive:* all other outcomes.
+]
+
+== Paired experiment
+
+#course-table(("Design choice", "Frozen local comparison"), (
+  ("Patient separation", "160 train / 54 test patients; 450 test patches"),
+  ("Repeated training", "P and A × 3 paired seeds; matched initialization"),
+  ("Shared budget", "120,000 updates; batch 12; final EMA"),
+  ("Preserved settings", "128 × 128; 250 cosine steps; K = 30"),
+  ("Compute", "12.157 GPU-hours used / 240-hour ceiling"),
+), size: 18pt, inset: 6pt)
 #v(.6em)
-Patient-only and alternative empty-mask analyses reach the same outcome.
+#text(size: 19pt)[Paper: four folds. Local test: one fold, with frozen consensus encoding and augmentation assumptions.]
+#v(.35em)
+#text(size: 18pt)[Earlier P-only runs had already examined this cohort. The freeze predates this P/A comparison, not all prior exposure.]
+
+== P/A result: inconclusive
+
+#course-table(("Metric", "Paper P / A", "Local P / A"), (
+  ("GED30 ↓", "0.0773 / 0.1029", fmt(pa.P_mean.at(0), digits: 6) + " / " + fmt(pa.A_mean.at(0), digits: 6)),
+  ("DiceSoft30 ↑", "92.20 / 90.43%", fmt(100 * pa.P_mean.at(1)) + " / " + fmt(100 * pa.A_mean.at(1)) + "%"),
+), size: 18pt, inset: 6pt)
+#v(.2em)
+#image("assets/pa-paired-intervals.svg", width: 100%, height: 127pt, fit: "contain")
+#v(.15em)
+#text(size: 20pt, weight: "bold", fill: um-blue)[Both paired intervals cross zero: the declared outcome is inconclusive.]
+#v(.25em)
+#text(size: 17pt)[95% intervals use 10,000 paired seed-by-patient draws; patients retain all patches. Paper: four-fold mean. Local: three-seed mean on one fold.]
 
 == Discrepancy diagnosis
 
-- Pairing, checkpoint identity and metric recomputation passed
-- The local P/A gap is smaller than the paper's gap
-- Subset sampling, categorical encoding and augmentation include disclosed assumptions
-- Split composition and three-seed variability remain possible explanations
+#two-column(gutter: 1.6em)[
+  #set text(size: 21pt)
+  #text(fill: um-blue, weight: "bold")[Checks completed]
+  #v(.4em)
+  - Matching split, budget and paired initialization
+  - Source and checkpoint identities checked
+  - Saved mask metrics and bootstrap reproduced
+][
+  #set text(size: 21pt)
+  #text(fill: um-blue-light, weight: "bold")[Explanations still open]
+  #v(.4em)
+  - Consensus encoding and augmentation choices
+  - Split composition and training variability
+  - One-fold scale and prior cohort exposure
+]
+#v(.65em)
+#text(size: 21pt)[Under our sampler, $E[z_P] = z_A$ at each pixel; shared subsets can still change spatial dependence.]
+#v(.45em)
+#text(size: 19pt)[This mechanism does not identify the cause of the paper–local gap. An inconclusive result does not prove equivalence.]
 
-#v(.7em)
-P and A have the same expected per-pixel consensus under the frozen sampler. Shared subsets can still change spatial dependence.
+= Controlled extensions
+
+== Improvement hypotheses
+
+#text(size: 19pt)[Reproduced DiffOSeg: four patient folds, one seed recipe, a different frozen training path. Historical primary endpoints: GED50, DiceSoft50 and preference Dice.]
 #v(.5em)
-No controlled study isolates the cause of the discrepancy.
+#course-table(("Hypothesis", "Mechanism", "Pilot → full evaluation"), (
+  ("H1 · Boundary", "Correct localization error", "Inner gate passed → v1 improved"),
+  ("H2 · Polar", "Model contour variation", "Pilot qualified → v2 negative"),
+  ("H3 · Votes", "Supervise pixel disagreement", "Inner selection → v3 improved"),
+  ("H4 · Energy", "Calibrate sample distribution", "Decoder failed; readout passed → v4"),
+), size: 17pt, inset: 7pt)
+#v(.6em)
+#text(size: 19pt)[We focus on v4, retaining its inherited components, failed alternatives and controls. This study does not replace the P/A test.]
 
-= Extensions
+== Energy calibration
 
-== Improvement portfolio
-
-#course-table(("Hypothesis", "Mechanism", "Evidence"), (
- ("H1 Boundary", "Correct localization", "Full v1 + image-only control"),
- ("H2 Polar", "Model boundary variation", "Full v2 negative result"),
- ("H3 Votes", "Supervise local disagreement", "Full v3 + control"),
- ("H4 Energy", "Calibrate sample distribution", "Failed pilot + full v4"),
-), size: 16pt, inset: 6pt)
+#text(size: 22pt, weight: "bold", fill: um-blue)[Accurate marginal votes need not yield a good spatial distribution.]
 #v(.7em)
-These studies use the separately frozen E11 four-fold baseline.
+#course-table(("Step", "Input → operation → output"), (
+  ("1 · Joint decoding", "Four rank heads + vote heads → 16 binary label states"),
+  ("2 · Distribution readout", "Cumulative supports + proposal frequency → calibrated frequency"),
+  ("3 · Sampling", "Calibrated frequency + sample ordering → K = 50 masks"),
+), size: 18pt, inset: 7pt)
+#v(.65em)
+#text(size: 21pt)[Fit the readout with *empirical GED + 3 × DiceSoft loss*.]
 #v(.4em)
-Historical primary endpoints: GED50, DiceSoft50 and aligned preference Dice.
+#text(size: 18pt)[Calibration uses internal training-patient partitions; the readout is locked before outer inference. The decoder-only pilot failed its GED gate.]
 
-== Four-fold consensus results
+== Results and controls
 
-#course-table(("Method", "GED30", "DS30 (%)", "GED50", "DS50 (%)"), tables.consensus, size: 16pt, inset: 6pt)
-#v(.6em)
-v4 versus v3: GED50 change −0.003426, CI [−0.005314, −0.001551].
-#v(.4em)
-Small positive Dice changes have intervals that cross zero.
-
-== Energy calibration controls
-
-#course-table(("Variant", "GED50", "DS50 (%)", "Preference (%)"), tables.ablation, size: 15pt, inset: 5pt)
-#v(.6em)
-Removing the energy readout worsens GED.
+#course-table(("Variant", "GED50 ↓", "DiceSoft50 (%) ↑"), (
+  ("Votes v3", fmt(v4.at("GED@50").v3, digits: 6), fmt(100 * v4.at("Dice_soft@50").v3, digits: 3)),
+  ("Full v4", fmt(v4.at("GED@50").full, digits: 6), fmt(100 * v4.at("Dice_soft@50").full, digits: 3)),
+  ("No energy readout", fmt(v4.at("GED@50").no_energy, digits: 6), fmt(100 * v4.at("Dice_soft@50").no_energy, digits: 3)),
+  ("Original sample order", fmt(v4.at("GED@50").no_order, digits: 6), fmt(100 * v4.at("Dice_soft@50").no_order, digits: 3)),
+  ("Energy-only on v3", fmt(v4.at("GED@50").energy_only, digits: 6), fmt(100 * v4.at("Dice_soft@50").energy_only, digits: 3)),
+), size: 18pt, inset: 6pt)
+#v(.55em)
+#text(size: 20pt, weight: "bold", fill: um-blue)[v4 − v3 GED50: −0.003426; 95% CI [−0.005314, −0.001551]]
+#v(.35em)
+#text(size: 18pt)[The old order improves GED further; energy-only trades DiceSoft for GED. The small v4 Dice gains have intervals crossing zero.]
 #v(.3em)
-The original sample order beats the new ordering in this fitted system.
-#v(.3em)
-Controls remove components at inference without retraining.
+#text(size: 17pt)[Controls reuse fitted weights. Patient intervals condition on those models; total compute is not matched.]
 
-== Supplementary preference result
+== Preference extension
 
-#course-table(("Fold", "Patients", "Patches", "E11 (%)", "A (%)", "E (%)"), tables.preference, size: 15pt, inset: 5pt)
-#v(.6em)
-E: *90.5210%*, +2.4985 pp versus E11.
+#two-column(left-width: 1.25fr, right-width: 1fr, gutter: 1.2em)[
+  #image("assets/preference-results.svg", width: 100%, height: 210pt, fit: "contain")
+][
+  #set text(size: 19pt)
+  #text(size: 26pt, weight: "bold", fill: um-blue)[90.5210%]
+  #v(.3em)
+  *+2.4985 pp* vs Reproduced DiffOSeg
+  #v(.5em)
+  Localization / registration, followed by SAM adaptation and a three-seed SAM2.1 combination.
+  #v(.5em)
+  Extra models and compute; the historical 91% target remains unmet.
+]
 #v(.4em)
-Deterministic CT guidance and three SAM2.1 seeds add models and compute. The historical 91% target remains unmet.
+#text(size: 18pt)[Four-fold preference Dice averages four area-ranked masks. Ranks are size-based styles, not persistent clinician identities.]
+#v(.3em)
+#text(size: 17pt)[Same repeatedly used cohort. Pref-A is an extension system, unrelated to A = average aggregation in the P/A test.]
 
-= Study limits
+= Evidence and limits
 
-== Interpretation limits
+== Agent use and evidence
 
-- Original claim and extensions use different frozen baselines
-- Repeated use of the cohort limits generalization claims
-- Patient intervals condition on the fitted extension models
-- Three ensemble members are not three full-system repetitions
-- Complete historical compute accounting remains unavailable
+#course-table(("Phase", "Consequential action", "Verification record"), (
+  ("Understand / audit", "Recovered the omitted P/A archive", "Frozen source, six runs and pairing"),
+  ("Implement / check", "Built CPU evidence checks", "Metric fixtures and package checks"),
+  ("Analyze / challenge", "Retained the inconclusive decision", "Full saved-mask and bootstrap replay"),
+), size: 17pt, inset: 7pt)
+#v(.8em)
+#text(size: 21pt, fill: um-blue, weight: "bold")[Reported results are traceable; evidence checks passed.]
 
-#v(.7em)
-Final E's preference Dice does not replace the P/A GED30 and DiceSoft30 test.
+== Limits and next steps
 
-== Evidence and team roles
-
-#text(fill: um-blue, weight: "bold")[Portable CPU review]
-#v(.5em)
-#raw("python3 -B scripts/check_course_project.py")
-#v(.7em)
-Full replay: 2,700 case groups and 81,000 predictions. Frozen-precision metric error: zero.
-#v(.7em)
-*Codex technical review:* recovered the P/A archive and verified the metrics and bootstrap.
-#v(.5em)
-Responsibility weights: Zheng 30%, Mu 30%, Liu 40%.
+#course-table(("Current limit", "Next verification"), (
+  ("P/A: one fold and only three seeds", "More folds / seeds; isolate encoding assumptions"),
+  ("Repeated use of the LIDC cohort", "Freeze the method and test a new cohort"),
+  ("Added models and incomplete compute totals", "Account for costs; compare matched budgets"),
+  ("Extension CIs condition on fitted models", "Repeat the complete training and selection process"),
+), size: 19pt, inset: 8pt)
+#v(.75em)
+#text(size: 20pt)[A three-seed ensemble is not three independent system repetitions.]
+#v(.45em)
+#text(size: 19pt)[The P/A claim, four-fold consensus study and preference extension retain separate conclusions.]
 
 == Conclusions
 
-#text(size: 1.15em, weight: "bold", fill: um-blue)[The submitted P/A experiment is complete and inconclusive.]
-#v(.9em)
-Energy calibration improves GED in the separate four-fold extension.
-#v(.7em)
-Negative studies and component controls constrain the explanation.
-#v(.7em)
-The evidence package makes the results inspectable while preserving their limits.
+#text(size: 25pt, weight: "bold", fill: um-blue)[P/A reproduction: complete, but inconclusive]
+#v(.45em)
+The local advantages are small and both paired intervals cross zero.
+#v(.85em)
+#text(size: 25pt, weight: "bold", fill: um-blue)[Energy calibration: a supported local GED gain]
+#v(.45em)
+Negative results and component controls limit the explanation.
+#v(.85em)
+#text(size: 25pt, weight: "bold", fill: um-blue)[Preference extension: 90.5210% with added resources]
+#v(.45em)
+Promising on this cohort; generalization and compute fairness remain open.

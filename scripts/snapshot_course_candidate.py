@@ -1,5 +1,6 @@
 """Record a candidate's files without creating a Git tag or claiming course approval."""
 
+from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
@@ -47,7 +48,7 @@ def main():
     }
     result = {
         "status": "submission_candidate_with_recorded_team_instructions",
-        "date": "2026-11-08",
+        "date": datetime.now(timezone.utc).date().isoformat(),
         "base_commit": subprocess.check_output(
             ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
         ).strip(),

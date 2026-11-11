@@ -39,4 +39,4 @@ OPENBLAS_NUM_THREADS=1 .venv/bin/python -B scripts/check_course_project.py --boo
 
 表格由 JSON 生成，避免手填数值。执行 `python3 -B scripts/render_course_tables.py` 后运行 `bash scripts/build_course_documents.sh` 生成基于 UM_Typst_Template 子模块的英文报告和 slides PDF。
 
-已生成的英文材料：[报告 PDF](../../report/course_project.pdf)、[slides PDF](../../presentation/course_project.pdf)、[slides PPTX](../../presentation/course_project.pptx)。PPTX 是模板规定的逐页图像版，编辑内容请改配套 Typst 源文件。
+已生成的英文材料：[报告 PDF](../../report/course_project.pdf)、[slides PDF](../../presentation/course_project.pdf)、[slides PPTX](../../presentation/course_project.pptx)。PPTX 是模板规定的逐页图像版，编辑内容请改配套 Typst 源文件。2026-11-11 已按“问题与论文 → claim 复现 → 受控改进 → 证据与局限”重构为含封面的 15 页；讲稿和时间分配见 defense.md，图表再生成及论文配图出处见 presentation/assets/README.md。
