@@ -11,6 +11,7 @@ All paths below are relative to the repository. Original archive-relative paths 
 | H2 negative polar study | v2.json | reproduction/polar_contours.py, polar_eval.py; frozen v2 assessment |
 | H3 vote supervision | v3.json | reproduction/vote_contours.py, vote_eval.py; frozen v3 assessment |
 | H4 energy calibration and ablations | v4.json | reproduction/joint_energy.py, joint_study.py; frozen v4 assessment |
+| Pilot numbers, promotion gates and v4 selection in slides 9–10 | presentation/pilot_evidence.json | presentation/prepare_pilot_evidence.py; 20 archived fold result/lock records with hashes and five protocol identities |
 | Historical branch combination | v9.json | Frozen order_preference_v9 assessment |
 | Supplemental 90%, A and E | preference90.json, formal_a.json, formal_e.json | Corresponding archived selection, sealed predictions, training receipts |
 | Negative and partial history | registry.csv; docs/lidc_91/results.md | Each listed external run; inventory alone does not prove completion |
@@ -20,6 +21,6 @@ All paths below are relative to the repository. Original archive-relative paths 
 | Team allocation / confirmation | team_plan.json | User-provided 30/30/40 allocation, delegated checking and teacher confirmation |
 | This package verification | validation.json | New smoke/tests plus archived-source test rerun; exact commands recorded |
 
-The short filenames in the second column live in results/course_project/. Medical images, masks, trained weights and public-model binaries remain outside Git. The included patient_cluster values are newly assigned integers for paired bootstrap and reveal no original patient identifier.
+The short filenames in the second column live in results/course_project/; explicitly prefixed presentation/ paths are relative to the repository root. Medical images, masks, trained weights and public-model binaries remain outside Git. The included patient_cluster values are newly assigned integers for paired bootstrap and reveal no original patient identifier.
 
 Historical logs reported 34 tests for the P/A source and 139 for formal E. They refer to those frozen sources, not automatically to the current checkout. New verification is recorded separately.

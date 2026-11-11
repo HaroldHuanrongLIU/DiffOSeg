@@ -72,6 +72,7 @@
 // Values remain linked to the frozen evidence; no experiment is rerun here.
 #let pa = json("../results/course_project/pa_results.json").primary
 #let v4 = json("../results/course_project/v4.json").metrics
+#let pilots = json("pilot_evidence.json")
 #let fmt(value, digits: 4) = {
   let parts = str(calc.round(value, digits: digits)).split(".")
   let decimals = parts.at(1, default: "")
@@ -230,32 +231,49 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 
 = Controlled extensions
 
-== Improvement hypotheses
+== Hypotheses and pilot gates
 
-#text(size: 19pt)[Reproduced DiffOSeg: four patient folds, one seed recipe, a different frozen training path. Historical primary endpoints: GED50, DiceSoft50 and preference Dice.]
+#text(size: 18pt)[Separate four-fold extensions of Reproduced DiffOSeg; pilots use outer-training patients.]
+#v(.45em)
+#course-table(("Hypothesis / limitation", "Quantitative inner evidence", "Rule / next step"), (
+  ([*H1 · Boundary* \ Localization error],
+   "Dice " + fmt(100 * pilots.boundary.dice_min, digits: 2) + "–" + fmt(100 * pilots.boundary.dice_max, digits: 2) + "%",
+   "≥80% in every fold → v1"),
+  ([*H2 · Polar* \ Contour variation],
+   "Dice " + fmt(100 * pilots.polar.dice_min, digits: 2) + "–" + fmt(100 * pilots.polar.dice_max, digits: 2) + "%",
+   "≥78% in every fold → v2"),
+  ([*H3 · Votes* \ Pixel disagreement],
+   [ΔGED50 #fmt(pilots.votes.mean_delta.at("GED@50"), digits: 6) \ ΔDiceSoft50 +#fmt(100 * pilots.votes.mean_delta.at("Dice_soft@50"), digits: 3) pp],
+   [12 options/fold; maximize \ minimum relative gain → v3]),
+  ([*H4 · Energy* \ Distribution mismatch],
+   [Decoder-only fails; \ energy readout passes],
+   [Three-metric gate → v4 \ Details on the next slide]),
+), size: 17pt, inset: 6pt)
 #v(.5em)
-#course-table(("Hypothesis", "Mechanism", "Pilot → full evaluation"), (
-  ("H1 · Boundary", "Correct localization error", "Inner gate passed → v1 improved"),
-  ("H2 · Polar", "Model contour variation", "Pilot qualified → v2 negative"),
-  ("H3 · Votes", "Supervise pixel disagreement", "Inner selection → v3 improved"),
-  ("H4 · Energy", "Calibrate sample distribution", "Decoder failed; readout passed → v4"),
+#text(size: 17pt)[H1/H2: standalone Dice ranges across inner folds; finite-output checks also required. H3: mean changes vs its inner surrogate; parameter selection, not a fixed cutoff.]
+#v(.35em)
+#text(size: 18pt)[Passing a pilot permits evaluation. v2 later failed all three outer improvement directions.]
+
+== Why v4 was promoted
+
+#text(size: 21pt, weight: "bold", fill: um-blue)[Gate: all three four-fold mean changes must improve]
+#v(.3em)
+#text(size: 17pt)[Candidate − locked v3 surrogate, K=50. Required: ΔGED < 0; both ΔDice > 0. Dice changes are percentage points.]
+#v(.5em)
+#course-table(("Inner pilot", "ΔGED50", "ΔDiceSoft50", "ΔPref. Dice", "Decision"), (
+  ("Decoder only", "+" + fmt(pilots.v4.decoder_only.mean_delta.at("GED@50"), digits: 6),
+   "+" + fmt(100 * pilots.v4.decoder_only.mean_delta.at("Dice_soft@50"), digits: 3),
+   "+" + fmt(100 * pilots.v4.decoder_only.mean_delta.at("Dice_mean"), digits: 3), "FAIL; no outer test"),
+  ("+ Energy readout", fmt(pilots.v4.energy.mean_delta.at("GED@50"), digits: 6),
+   "+" + fmt(100 * pilots.v4.energy.mean_delta.at("Dice_soft@50"), digits: 3),
+   "+" + fmt(100 * pilots.v4.energy.mean_delta.at("Dice_mean"), digits: 3), "PASS → full v4"),
 ), size: 17pt, inset: 7pt)
 #v(.6em)
-#text(size: 19pt)[We focus on v4, retaining its inherited components, failed alternatives and controls. This study does not replace the P/A test.]
-
-== Energy calibration
-
-#text(size: 22pt, weight: "bold", fill: um-blue)[Accurate marginal votes need not yield a good spatial distribution.]
-#v(.7em)
-#course-table(("Step", "Input → operation → output"), (
-  ("1 · Joint decoding", "Four rank heads + vote heads → 16 binary label states"),
-  ("2 · Distribution readout", "Cumulative supports + proposal frequency → calibrated frequency"),
-  ("3 · Sampling", "Calibrated frequency + sample ordering → K = 50 masks"),
-), size: 18pt, inset: 7pt)
-#v(.65em)
-#text(size: 21pt)[Fit the readout with *empirical GED + 3 × DiceSoft loss*.]
+#text(size: 18pt)[*Revision:* keep the 16-state rank/vote decoder; fit a frequency readout with *GED + 3 × DiceSoft loss* to calibrate the sampled masks.]
+#v(.45em)
+#text(size: 19pt, weight: "bold", fill: um-blue)[Pass inner gate → lock parameters → seal outer predictions → score]
 #v(.4em)
-#text(size: 18pt)[Calibration uses internal training-patient partitions; the readout is locked before outer inference. The decoder-only pilot failed its GED gate.]
+#text(size: 17pt)[This is a point-estimate gate, not a significance test. Inner checks were reused during development. We focus on v4 because the failed pilot led to a targeted revision and full controls.]
 
 == Results and controls
 
@@ -271,7 +289,7 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 #v(.35em)
 #text(size: 18pt)[The old order improves GED further; energy-only trades DiceSoft for GED. The small v4 Dice gains have intervals crossing zero.]
 #v(.3em)
-#text(size: 17pt)[Controls reuse fitted weights. Patient intervals condition on those models; total compute is not matched.]
+#text(size: 17pt)[No-energy is a fixed-weight inference control, not the failed pilot. Patient CIs condition on fitted models; total compute is not matched.]
 
 == Preference extension
 

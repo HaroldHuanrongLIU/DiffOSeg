@@ -4,15 +4,15 @@
   "pdf_page_count": 15,
   "layout": "16:9 UM university theme; white backgrounds; top-right UM logo",
   "pptx_kind": "full-slide raster images; edit Typst source",
-  "source_sha256": "f157528e53c5029bc2426a3387b0cfc4c84c9ad4d36bb62ee6943b9eefc71c74",
-  "pdf_sha256": "8e181393f2702cc54d4c644def9c381e92e43f4afbbd2dbe44173d390f720ca2",
-  "pptx_sha256": "3eff643c62226166a8d31ae6689ea70e78511f7dfa190386948f7f28fb23f199",
+  "source_sha256": "66ccc39717e8bcb49f58dd5ab1e5a7b1f12dc968e235a838f607799900340d45",
+  "pdf_sha256": "a33dc2eada7058202eb0652ff0019c42bd92357446d03cf5bf6657fd21a6dea7",
+  "pptx_sha256": "834fa2e23f7d95cd89eb951041ec5e78ca001de205de524935e34f9728e3e882",
   "comparison": "same-source direct PNG at 144 PPI; slide order resolved through OOXML relationships",
   "package_xml_and_crc": "PASS",
   "pdf_text_within_page_bounds": true,
-  "pdf_word_count": 1138,
+  "pdf_word_count": 1207,
   "page_numbering": "2/15 through 15/15; cover included in total",
-  "visual_review": "Simplified evidence statement on page 13 visually inspected; the other 14 pages are pixel-identical to the previous deck; no unintended clipping or overlap",
+  "visual_review": "Pilot evidence and promotion process on pages 9\u201311 visually inspected; other 12 pages pixel-identical to the prior deck; no unintended clipping or overlap",
   "evidence_smoke": {
     "command": "python3 -B scripts/check_course_project.py",
     "date": "2026-11-11",
@@ -232,15 +232,15 @@
       },
       {
         "slide": 9,
-        "left_px": 239,
-        "right_px": 1444,
-        "center_error_px": 0.5
+        "left_px": 211,
+        "right_px": 1473,
+        "center_error_px": 0.0
       },
       {
         "slide": 10,
-        "left_px": 148,
-        "right_px": 1535,
-        "center_error_px": 0.5
+        "left_px": 275,
+        "right_px": 1409,
+        "center_error_px": 0.0
       },
       {
         "slide": 11,
@@ -281,6 +281,25 @@
   },
   "publication_check": {
     "svg_trailing_whitespace_removed": true,
-    "all_15_slides_pixel_identical_to_approved_deck": true
+    "all_15_slides_pixel_identical_to_approved_deck": true,
+    "scope": "Prior committed deck at 120c1ba8d07b546147674e38ad67f6fe4005af72; current pilot additions are validated under pilot_evidence_revision"
+  },
+  "pilot_evidence_revision": {
+    "pages": [
+      9,
+      10,
+      11
+    ],
+    "evidence": "presentation/pilot_evidence.json",
+    "evidence_sha256": "8584100f183ce5d79203cb310fb5f9e2f2a4b174c3a31528a45edea2fe6f1282",
+    "extractor_sha256": "0f319080dfb67eb91ba5879af0997eaba84878c16d3adc9c465cbba521c0f0e6",
+    "source_records": 20,
+    "protocols": 5,
+    "archived_sources_verified": true,
+    "decoder_only_gate": "FAIL",
+    "energy_gate": "PASS",
+    "other_pages_unchanged": true,
+    "speaker_timing_seconds": 900,
+    "new_training_or_inference": false
   }
 }

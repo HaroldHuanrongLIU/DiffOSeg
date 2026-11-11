@@ -1,0 +1,393 @@
+{
+  "scope": "Historical inner pilots on outer-training patients; no new experiments",
+  "aggregation": "Equal mean of the four fold-specific inner results; not outer-test metrics",
+  "units": "Raw Dice values are fractions; slides multiply Dice deltas by 100 for percentage points",
+  "sources": [
+    {
+      "archive_relative": "20261106_rank_boundary_v1/fold-0-inner/result.json",
+      "sha256": "ae5e37f58587a027351625299902cc3ff58ef90b560fefad001be1ffae60c1f1"
+    },
+    {
+      "archive_relative": "20261106_rank_boundary_v1/fold-1-inner/result.json",
+      "sha256": "2a371147c094ff9145e5713b45a46d3ee0ccac9cd792af74610357b28a6029d2"
+    },
+    {
+      "archive_relative": "20261106_rank_boundary_v1/fold-2-inner/result.json",
+      "sha256": "26138103a75c71c9f89370fc68cfbed69daa1abbc818c64d98ccca2281ef1aa8"
+    },
+    {
+      "archive_relative": "20261106_rank_boundary_v1/fold-3-inner/result.json",
+      "sha256": "cd949772bbf07382afb6fedc06f7fef7885a732135624d60ac06ace519681b43"
+    },
+    {
+      "archive_relative": "20261106_polar_residual_v2/fold-0-inner/result.json",
+      "sha256": "8241c43df9d08f75f05a738a5acbfc5e88c6df9ac0cff151cbb50ab52d597951"
+    },
+    {
+      "archive_relative": "20261106_polar_residual_v2/fold-1-inner/result.json",
+      "sha256": "bbec873b7bdfef19f4bba135a20296b025629aac12079a7b4dc721065c88ddb6"
+    },
+    {
+      "archive_relative": "20261106_polar_residual_v2/fold-2-inner/result.json",
+      "sha256": "a76399b33b52f04f9bc57c912d271e92397ee6ecaf70ae250f1d14c5bc5a1693"
+    },
+    {
+      "archive_relative": "20261106_polar_residual_v2/fold-3-inner/result.json",
+      "sha256": "c4a7492f76ae32b1e3f9aa0b0cac20cb7669919151aec4f377520ce0bf8de3ff"
+    },
+    {
+      "archive_relative": "20261106_vote_transport_v3/lock-0.json",
+      "sha256": "c54e256f2327e4e91c5ad122a837c1cba054d55939ed13798a703554a9c60639"
+    },
+    {
+      "archive_relative": "20261106_vote_transport_v3/lock-1.json",
+      "sha256": "8cca3c868a4b4a30be7d4852a743e965c100994f9bf640be1495a67747a9dff0"
+    },
+    {
+      "archive_relative": "20261106_vote_transport_v3/lock-2.json",
+      "sha256": "e43d8ae6c0cbfca8921f6578f453fb74688f5f6dc398cdf4e78280e98008035e"
+    },
+    {
+      "archive_relative": "20261106_vote_transport_v3/lock-3.json",
+      "sha256": "988509d5ead7ab55f907f024931f80650b71320893b7e357ad267c4f96a70865"
+    },
+    {
+      "archive_relative": "20261106_joint_rater_v4/lock-0.json",
+      "sha256": "734c779b7c469d623d028a3e4bddf2a4bc97738ee333eadd7e74788e2cc4bf21"
+    },
+    {
+      "archive_relative": "20261106_joint_rater_v4/lock-1.json",
+      "sha256": "45d883137b9aa8a253b76c966eb87e72b0820440003715e8492b4c4cad21a3a1"
+    },
+    {
+      "archive_relative": "20261106_joint_rater_v4/lock-2.json",
+      "sha256": "45a6e81c9f5ce83334f5c2c36e033f571fc4a2f87177d43827bfe560c888cbc2"
+    },
+    {
+      "archive_relative": "20261106_joint_rater_v4/lock-3.json",
+      "sha256": "a5934d2ce517267eb2b8d304c08775d93bb0e4edb9cb5e9bcc0bc577a8486cb0"
+    },
+    {
+      "archive_relative": "20261106_joint_energy_v4/lock-0.json",
+      "sha256": "1fdbabc5b92f740e85461fd8bebc4cce5c0a6b8b8256e487e6ebbf58383f231b"
+    },
+    {
+      "archive_relative": "20261106_joint_energy_v4/lock-1.json",
+      "sha256": "2084d23dbd93a831e156f42dccdfe24ec565652d591b9dfae877d8e813760333"
+    },
+    {
+      "archive_relative": "20261106_joint_energy_v4/lock-2.json",
+      "sha256": "2801c6d1955688dfe75247402a470c4ff72cc303d4a55416fd73166c18cbca6e"
+    },
+    {
+      "archive_relative": "20261106_joint_energy_v4/lock-3.json",
+      "sha256": "9b21866c7502e33c89ee75a2d767da6960189f92db3cc707e0438621e9e91d93"
+    }
+  ],
+  "boundary": {
+    "folds": [
+      {
+        "fold": 0,
+        "dice": 0.8958178162574768,
+        "passed": true
+      },
+      {
+        "fold": 1,
+        "dice": 0.8953395485877991,
+        "passed": true
+      },
+      {
+        "fold": 2,
+        "dice": 0.898009717464447,
+        "passed": true
+      },
+      {
+        "fold": 3,
+        "dice": 0.8905771970748901,
+        "passed": true
+      }
+    ],
+    "threshold": 0.8,
+    "dice_min": 0.8905771970748901,
+    "dice_max": 0.898009717464447,
+    "all_passed": true,
+    "gate_type": "Fit sanity gate; also requires finite outputs, not evidence of outer improvement"
+  },
+  "polar": {
+    "folds": [
+      {
+        "fold": 0,
+        "dice": 0.8632670914769928,
+        "passed": true
+      },
+      {
+        "fold": 1,
+        "dice": 0.8662937952171132,
+        "passed": true
+      },
+      {
+        "fold": 2,
+        "dice": 0.8683563982418295,
+        "passed": true
+      },
+      {
+        "fold": 3,
+        "dice": 0.8718066508249668,
+        "passed": true
+      }
+    ],
+    "threshold": 0.78,
+    "dice_min": 0.8632670914769928,
+    "dice_max": 0.8718066508249668,
+    "all_passed": true,
+    "gate_type": "Fit sanity gate; also requires finite outputs, not evidence of outer improvement"
+  },
+  "votes": {
+    "folds": [
+      {
+        "fold": 0,
+        "candidate_count": 12,
+        "control": {
+          "GED@50": 0.0973777632737897,
+          "Dice_soft@50": 0.8925946737073129
+        },
+        "selected": {
+          "GED@50": 0.09549696528420006,
+          "Dice_soft@50": 0.9072879105499108
+        },
+        "hardness": 0.5,
+        "strength": 0.9,
+        "selection_objective": 0.016461264306642975
+      },
+      {
+        "fold": 1,
+        "candidate_count": 12,
+        "control": {
+          "GED@50": 0.10694843906872344,
+          "Dice_soft@50": 0.896210078260686
+        },
+        "selected": {
+          "GED@50": 0.10263020028867344,
+          "Dice_soft@50": 0.911233645972639
+        },
+        "hardness": 1.0,
+        "strength": 0.9,
+        "selection_objective": 0.016763444282070456
+      },
+      {
+        "fold": 2,
+        "candidate_count": 12,
+        "control": {
+          "GED@50": 0.12679649479905067,
+          "Dice_soft@50": 0.8899823929831301
+        },
+        "selected": {
+          "GED@50": 0.12380662699889021,
+          "Dice_soft@50": 0.9085341189339846
+        },
+        "hardness": 1.0,
+        "strength": 1.0,
+        "selection_objective": 0.020845048280866585
+      },
+      {
+        "fold": 3,
+        "candidate_count": 12,
+        "control": {
+          "GED@50": 0.1128497829903727,
+          "Dice_soft@50": 0.900997210499169
+        },
+        "selected": {
+          "GED@50": 0.10439141040694887,
+          "Dice_soft@50": 0.9171669693096829
+        },
+        "hardness": 1.0,
+        "strength": 1.0,
+        "selection_objective": 0.0179465137317745
+      }
+    ],
+    "selection_rule": "Maximize the minimum of relative GED reduction and relative DiceSoft gain over 12 options per fold; listed-order tie break",
+    "gate_type": "Engineering checks plus inner parameter selection; no fixed numerical superiority cutoff",
+    "mean_delta": {
+      "GED@50": -0.004411819288305984,
+      "Dice_soft@50": 0.016109572328979804
+    }
+  },
+  "v4": {
+    "gate": "All three fold-equal inner point estimates improve over the locked v3 surrogate: GED50 delta < 0, DiceSoft50 delta > 0, preference Dice delta > 0",
+    "significance_gate": false,
+    "check_set_reused": true,
+    "decoder_only": {
+      "folds": [
+        {
+          "fold": 0,
+          "control": {
+            "GED@50": 0.09549686543105804,
+            "Dice_soft@50": 0.9072879105499108,
+            "Dice_mean": 0.8920402022981152
+          },
+          "candidate": {
+            "GED@50": 0.09561595566493948,
+            "Dice_soft@50": 0.9100282736045803,
+            "Dice_mean": 0.8940833137207425
+          },
+          "delta": {
+            "GED@50": 0.00011909023388144424,
+            "Dice_soft@50": 0.0027403630546695146,
+            "Dice_mean": 0.002043111422627253
+          }
+        },
+        {
+          "fold": 1,
+          "control": {
+            "GED@50": 0.10284974662089112,
+            "Dice_soft@50": 0.911128637106112,
+            "Dice_mean": 0.8954809296249163
+          },
+          "candidate": {
+            "GED@50": 0.10726162422411513,
+            "Dice_soft@50": 0.9126889993648718,
+            "Dice_mean": 0.8967709482306301
+          },
+          "delta": {
+            "GED@50": 0.004411877603224007,
+            "Dice_soft@50": 0.0015603622587597732,
+            "Dice_mean": 0.0012900186057137608
+          }
+        },
+        {
+          "fold": 2,
+          "control": {
+            "GED@50": 0.12380654482465041,
+            "Dice_soft@50": 0.9085341189339846,
+            "Dice_mean": 0.8948965693077846
+          },
+          "candidate": {
+            "GED@50": 0.1258041755410663,
+            "Dice_soft@50": 0.9091896288576182,
+            "Dice_mean": 0.896025368344714
+          },
+          "delta": {
+            "GED@50": 0.001997630716415885,
+            "Dice_soft@50": 0.0006555099236336126,
+            "Dice_mean": 0.0011287990369294176
+          }
+        },
+        {
+          "fold": 3,
+          "control": {
+            "GED@50": 0.10439413515985876,
+            "Dice_soft@50": 0.9171644393084711,
+            "Dice_mean": 0.8982618058073348
+          },
+          "candidate": {
+            "GED@50": 0.1109459008211675,
+            "Dice_soft@50": 0.9174513039381607,
+            "Dice_mean": 0.8998225301072218
+          },
+          "delta": {
+            "GED@50": 0.006551765661308731,
+            "Dice_soft@50": 0.00028686462968952053,
+            "Dice_mean": 0.001560724299886962
+          }
+        }
+      ],
+      "mean_delta": {
+        "GED@50": 0.003270091053707517,
+        "Dice_soft@50": 0.0013107749666881052,
+        "Dice_mean": 0.0015056633412893483
+      },
+      "passed": false,
+      "outer_evaluation": "NOT_RUN"
+    },
+    "energy": {
+      "folds": [
+        {
+          "fold": 0,
+          "control": {
+            "GED@50": 0.09549697880277928,
+            "Dice_soft@50": 0.9072879105499108,
+            "Dice_mean": 0.8920402022981152
+          },
+          "candidate": {
+            "GED@50": 0.0932275402484481,
+            "Dice_soft@50": 0.9117660779928425,
+            "Dice_mean": 0.8940833137207425
+          },
+          "delta": {
+            "GED@50": -0.0022694385543311907,
+            "Dice_soft@50": 0.004478167442931724,
+            "Dice_mean": 0.002043111422627253
+          }
+        },
+        {
+          "fold": 1,
+          "control": {
+            "GED@50": 0.10284974662089112,
+            "Dice_soft@50": 0.911128637106112,
+            "Dice_mean": 0.8954809296249163
+          },
+          "candidate": {
+            "GED@50": 0.09605337015473016,
+            "Dice_soft@50": 0.9133902946321092,
+            "Dice_mean": 0.8967709482306301
+          },
+          "delta": {
+            "GED@50": -0.006796376466160964,
+            "Dice_soft@50": 0.0022616575259971627,
+            "Dice_mean": 0.0012900186057137608
+          }
+        },
+        {
+          "fold": 2,
+          "control": {
+            "GED@50": 0.12380654116471608,
+            "Dice_soft@50": 0.9085341189339846,
+            "Dice_mean": 0.8948965693077846
+          },
+          "candidate": {
+            "GED@50": 0.11252657267433858,
+            "Dice_soft@50": 0.909419592221578,
+            "Dice_mean": 0.896025368344714
+          },
+          "delta": {
+            "GED@50": -0.011279968490377504,
+            "Dice_soft@50": 0.0008854732875933635,
+            "Dice_mean": 0.0011287990369294176
+          }
+        },
+        {
+          "fold": 3,
+          "control": {
+            "GED@50": 0.10439413515985876,
+            "Dice_soft@50": 0.9171644393084711,
+            "Dice_mean": 0.8982618058073348
+          },
+          "candidate": {
+            "GED@50": 0.0969645907373532,
+            "Dice_soft@50": 0.9172959753568624,
+            "Dice_mean": 0.8998225301072218
+          },
+          "delta": {
+            "GED@50": -0.0074295444225055685,
+            "Dice_soft@50": 0.00013153604839122313,
+            "Dice_mean": 0.001560724299886962
+          }
+        }
+      ],
+      "mean_delta": {
+        "GED@50": -0.006943831983343807,
+        "Dice_soft@50": 0.0019392085762283684,
+        "Dice_mean": 0.0015056633412893483
+      },
+      "passed": true,
+      "outer_evaluation": "COMPLETED"
+    }
+  },
+  "protocols": {
+    "docs/lidc_boundary/protocol.md": "bf52c0056f165dc27607ccef09771c2340f751694eab339fe35700faba0d63cf",
+    "docs/lidc_polar/protocol.md": "51ae7f340ad45219bd7b990f923a7dc9d61d60b6c75fa4dc4dc09b82d2ab9392",
+    "docs/lidc_vote/protocol.md": "393b58ebd0c249b1ce1fd61eb357e5ec983754debb3e2b68f6d5a47d56eea098",
+    "docs/lidc_joint/protocol.md": "f57493c1e4a0cc714b696caa0f5533d22d719828a24bd640e953530195cf35a8",
+    "docs/lidc_joint/energy_protocol.md": "d140de3bed11aeda38585c6eee4f3f0fdb47fbffe68167f015c3e0c124d3fced"
+  }
+}
