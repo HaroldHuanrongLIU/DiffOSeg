@@ -11,11 +11,13 @@ All paths below are relative to the repository. Original archive-relative paths 
 | H2 negative polar study | v2.json | reproduction/polar_contours.py, polar_eval.py; frozen v2 assessment |
 | H3 vote supervision | v3.json | reproduction/vote_contours.py, vote_eval.py; frozen v3 assessment |
 | H4 energy calibration and ablations | v4.json | reproduction/joint_energy.py, joint_study.py; frozen v4 assessment |
-| Pilot numbers, promotion gates and v4 selection in slides 9–10 | presentation/pilot_evidence.json | presentation/prepare_pilot_evidence.py; 20 archived fold result/lock records with hashes and five protocol identities |
+| Pilot numbers, promotion gates and v4 selection in the report and slides 9–10 | presentation/pilot_evidence.json | presentation/prepare_pilot_evidence.py; 20 archived fold result/lock records with hashes and five protocol identities |
 | Historical branch combination | v9.json | Frozen order_preference_v9 assessment |
 | Supplemental 90%, A and E | preference90.json, formal_a.json, formal_e.json | Corresponding archived selection, sealed predictions, training receipts |
 | Negative and partial history | registry.csv; docs/lidc_91/results.md | Each listed external run; inventory alone does not prove completion |
 | Tables in report and slides | tables.json, tables.md | scripts/render_course_tables.py from the checked JSON |
+| Report preference progression and displayed names | preference90.json, formal_a.json, formal_e.json; presentation/pilot_evidence.json | report/course_project.typ derives the added tables and display labels; underlying archive keys and scientific results stay unchanged |
+| Updated report PDF validation | report_validation.json | Seven-page rendered review, source/data/PDF hashes, numeric readback and unchanged slide artifacts |
 | Embedded PPTX speaking notes and 15-minute allocation | presentation/speaker_notes.json | Typst speaker-note metadata; Touying exports native notes for all 15 slides, with speaker names, time windows and source references |
 | Compute coverage | compute_receipts.csv, compute_coverage.json | Explicit archived fit/result timing fields; not a GPU-hour total |
 | Full P/A mask replay | replay_20261108_verified/summary.json and recomputed_cases.csv | scripts/replay_course_results.py; all 2700 groups, 81000 masks; Codex executor |
