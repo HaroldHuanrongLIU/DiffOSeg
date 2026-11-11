@@ -1,0 +1,200 @@
+{
+  "language": "English",
+  "total_seconds": 900,
+  "timing_basis": "Equal allocation: five consecutive slides and about five minutes per speaker. Planned windows include pointing, pauses and handovers after slides 5 and 10; actual timing needs rehearsal. Only the script is spoken.",
+  "slides": [
+    {
+      "slide": 1,
+      "title": "Title",
+      "speaker": "Keru ZHENG",
+      "seconds": 20,
+      "time_window": "00:00–00:20",
+      "script": "Good evening. We are Keru Zheng, Yanchen Mu, and Huanrong Liu. We will explain DiffOSeg, test one claim from the paper, and present our improvement studies.",
+      "cue": "Introduce the team, then move on. Do not read the course name or date.",
+      "references": [
+        "Team names and roles: CONTRIBUTIONS.md."
+      ]
+    },
+    {
+      "slide": 2,
+      "title": "Multi-rater segmentation",
+      "speaker": "Keru ZHENG",
+      "seconds": 50,
+      "time_window": "00:20–01:10",
+      "script": "This is one CT image with four masks drawn by different experts. A mask marks the area we want to segment. Notice that their boundaries are different. When an image is unclear, more than one outline may be reasonable.\n\nThis gives us two goals. Consensus asks what the experts share and where they disagree. Preference asks how to produce a mask for a particular annotation style. DiffOSeg tries to support both goals.",
+      "cue": "Point at the four masks. Pause briefly before explaining the two goals.",
+      "references": [
+        "Zhang et al. (2025), DiffOSeg, Figure 2: https://arxiv.org/html/2507.13087v2",
+        "The displayed image and masks come from the paper, not our local predictions. Figure credits: presentation/assets/README.md."
+      ]
+    },
+    {
+      "slide": 3,
+      "title": "DiffOSeg in two stages",
+      "speaker": "Keru ZHENG",
+      "seconds": 80,
+      "time_window": "01:10–02:30",
+      "script": "The method has two stages. In Stage I, the model learns to generate different masks for the same image. During training, noise is added to a mask. The model then learns to remove that noise, using the CT image as a guide. The labels are discrete, so this is called categorical diffusion. Repeated sampling gives several possible masks.\n\nStage II starts from Stage I and adds prompts that guide the output toward a target annotation style. The upper part of the figure shows Stage I, and the middle part shows Stage II. Our reproduction focuses on the consensus strategy in Stage I.",
+      "cue": "Follow the arrows in the upper row, then point to Stage II. The detailed prompt block needs only a brief mention.",
+      "references": [
+        "Zhang et al. (2025), DiffOSeg, Figure 1 and Sections 2.1–2.2: https://arxiv.org/html/2507.13087v2",
+        "Figure credits: presentation/assets/README.md."
+      ]
+    },
+    {
+      "slide": 4,
+      "title": "P versus A",
+      "speaker": "Keru ZHENG",
+      "seconds": 70,
+      "time_window": "02:30–03:40",
+      "script": "We compare two ways of combining the same four annotations. A means average aggregation: use all four masks every time. P means probabilistic consensus: choose a subset and average only those masks. For example, one visit may use two masks, while another uses all four.\n\nIn our fixed implementation, each subset size has the same chance. We then choose a random subset of that size. Both methods draw binary targets from the resulting probabilities. This is our documented interpretation of details that the paper leaves open. The network and training budget stay the same.",
+      "cue": "Use the two-mask example; do not read the equations symbol by symbol.",
+      "references": [
+        "Paper Table 3 and Section 2.1: https://arxiv.org/html/2507.13087v2",
+        "Local implementation choices: docs/course_project/claim_and_protocol.md; results/course_project/pa_protocol.json."
+      ]
+    },
+    {
+      "slide": 5,
+      "title": "Claim and metrics",
+      "speaker": "Keru ZHENG",
+      "seconds": 80,
+      "time_window": "03:40–05:00",
+      "script": "Our question is simple: does P work better than A under our fixed setup? We use two scores. GED compares the distribution of generated masks with the expert masks. Lower is better. For DiceSoft, we average the predicted masks and the expert masks, then compare them at five thresholds. Higher is better. The number thirty means that we generate thirty masks for each image.\n\nWe set the decision rule before this comparison. We call the claim supported only when both confidence intervals favor P. If either score clearly goes in the opposite direction, it is not supported. Otherwise, the result is inconclusive.\n\nYanchen will now explain how we ran the comparison and what we found.",
+      "cue": "Point at the two score directions. Hand over to Yanchen Mu at talk clock 5:00.",
+      "references": [
+        "Submitted claim: docs/course_project_requirement/CISC8006-submitted-claim.md.",
+        "Metric definitions and decision rule: docs/course_project/claim_and_protocol.md; results/course_project/pa_metrics_set.py."
+      ]
+    },
+    {
+      "slide": 6,
+      "title": "Paired experiment",
+      "speaker": "Yanchen MU",
+      "seconds": 45,
+      "time_window": "05:00–05:45",
+      "script": "We used one fixed patient split: one hundred and sixty patients for training and fifty-four for testing. The test set has four hundred and fifty patches. Patches from the same person stay in one group.\n\nP and A each had three training seeds, with matched starting weights and budgets. We kept the main image and diffusion settings, but used one fold instead of four. Our encoding choices and earlier use of these patients are disclosed.",
+      "cue": "Point to patient separation and paired seeds. Mention the compute row briefly if time permits; do not read every setting.",
+      "references": [
+        "results/course_project/pa_runs.json; pa_protocol.json; pa_results.json.",
+        "Prior exposure and deviations: docs/course_project/claim_and_protocol.md."
+      ]
+    },
+    {
+      "slide": 7,
+      "title": "P/A result: inconclusive",
+      "speaker": "Yanchen MU",
+      "seconds": 75,
+      "time_window": "05:45–07:00",
+      "script": "The paper shows a much larger advantage for P. In our test, the GED means are almost equal, and DiceSoft improves by only about zero point one two percentage points.\n\nThe plots show P minus A. Negative values favor P for GED; positive values favor P for DiceSoft. Both confidence intervals cross zero, so the result is inconclusive.\n\nWe resampled seeds and patients, keeping all patches from each patient together and keeping P and A paired. This accounts for related patches. P had better GED in only one of three seed pairs. The evidence does not establish that P is better, or that the two methods are equal.",
+      "cue": "Pause at the zero lines. Spend most of this slide on the intervals and the decision, not on reading six-decimal numbers.",
+      "references": [
+        "Paper Table 3: https://arxiv.org/html/2507.13087v2",
+        "Local scores and intervals: results/course_project/pa_results.json; pa_cases.csv.",
+        "Paired seed-by-patient bootstrap: 10,000 draws. Detailed figures: docs/course_project/claim_and_protocol.md."
+      ]
+    },
+    {
+      "slide": 8,
+      "title": "Discrepancy diagnosis",
+      "speaker": "Yanchen MU",
+      "seconds": 45,
+      "time_window": "07:00–07:45",
+      "script": "We checked the paired settings, starting weights, saved source, mask scores, and confidence intervals. These checks support the reported numbers.\n\nP and A give each annotator the same average weight. However, selecting one subset for the whole image can change how pixels vary together. The resulting mask distributions may still differ.\n\nThe split, training variation, and implementation choices remain possible explanations. We have not isolated the cause. Next, we move to a separate improvement study.",
+      "cue": "Explain the average-weight idea briefly, then continue to the improvement study. No speaker change here.",
+      "references": [
+        "docs/course_project/diagnosis.md.",
+        "Verified saved-mask replay: results/course_project/replay_20261108_verified/summary.json."
+      ]
+    },
+    {
+      "slide": 9,
+      "title": "Hypotheses and pilot gates",
+      "speaker": "Yanchen MU",
+      "seconds": 60,
+      "time_window": "07:45–08:45",
+      "script": "These improvements use four folds. Inner data is used for tuning; outer data is used for final testing.\n\nThe boundary pilot reached about eighty-nine to ninety percent Dice, above its eighty-percent gate. The polar pilot reached about eighty-six to eighty-seven percent, above its seventy-eight-percent gate. However, the polar method later failed to improve the outer scores.\n\nVote supervision tested twelve settings per fold and balanced GED and DiceSoft gains. These were tuning results, not final test scores. The energy idea then asked whether training the sample distribution directly could help.",
+      "cue": "Briefly point to the two Dice ranges and gates. Keep the distinction between pilot success and final test success clear.",
+      "references": [
+        "presentation/pilot_evidence.json: 20 archived fold records and five protocol identities.",
+        "Protocols: docs/lidc_boundary/protocol.md; docs/lidc_polar/protocol.md; docs/lidc_vote/protocol.md."
+      ]
+    },
+    {
+      "slide": 10,
+      "title": "Why v4 was promoted",
+      "speaker": "Yanchen MU",
+      "seconds": 75,
+      "time_window": "08:45–10:00",
+      "script": "The v4 gate required lower GED and higher values for both Dice scores, averaged across four inner folds.\n\nThe first decoder improved Dice but made GED worse, so it failed and did not enter the outer test. We then added a layer that controls how often each pixel appears in the sampled masks. Training this layer with GED and DiceSoft improved all three scores, so the revised method passed.\n\nWe fixed the parameters and saved the outer predictions before scoring. This gate used average scores, not significance, and the inner checks had been reused.\n\nHuanrong will now explain the full test results and controls.",
+      "cue": "Compare the FAIL and PASS rows. Hand over to Huanrong Liu at talk clock 10:00.",
+      "references": [
+        "presentation/pilot_evidence.json: decoder_only and energy mean_delta fields.",
+        "docs/lidc_joint/protocol.md; energy_protocol.md; results.md.",
+        "The original failed pilot is different from the later fixed-weight no-energy ablation."
+      ]
+    },
+    {
+      "slide": 11,
+      "title": "Results and controls",
+      "speaker": "Huanrong LIU",
+      "seconds": 75,
+      "time_window": "10:00–11:15",
+      "script": "On the outer test, v4 has lower GED than v3. The whole interval for the GED change is below zero, which supports this gain. The small Dice gains remain uncertain.\n\nRemoving the energy layer makes GED worse. Keeping the old sample order actually works better than the new order, so we cannot claim that every change helped. Energy-only gives even lower GED but reduces DiceSoft. It improves one score at the cost of another.\n\nThese controls use the same fitted weights. The no-energy row is not the failed pilot from the previous slide. Also, these patient intervals describe the fitted models; they do not include the variation from training the whole system again.",
+      "cue": "Take over from Yanchen Mu. Compare full v4, no energy, original order, and energy-only; leave a short pause for the table.",
+      "references": [
+        "results/course_project/v4.json; docs/lidc_joint/results.md.",
+        "Patient intervals condition on fitted models; the component controls are not separately retrained."
+      ]
+    },
+    {
+      "slide": 12,
+      "title": "Preference extension",
+      "speaker": "Huanrong LIU",
+      "seconds": 75,
+      "time_window": "11:15–12:30",
+      "script": "We also studied preference segmentation. The baseline reaches about eighty-eight point zero two percent Dice. Pref-A reaches ninety point four five, and Final E reaches ninety point five two. This is about two point five percentage points above the baseline.\n\nThe largest step along this path came from better location, alignment, and refinement. SAM-based models then added smaller gains. Final E uses a three-seed SAM2.1 combination and extra compute.\n\nHere, preference means four styles ordered by mask size, not four fixed doctors across patients. The same patient group was used many times, and the ninety-one-percent target was not reached.",
+      "cue": "Follow the three dots. Explain the gains and added resources; Pref-A is not average aggregation A.",
+      "references": [
+        "results/course_project/formal_e.json; docs/lidc_reproduction_to_best.md.",
+        "Final E exact Dice: 90.5209738%; gain over Reproduced DiffOSeg: 2.4985112 pp."
+      ]
+    },
+    {
+      "slide": 13,
+      "title": "Agent use and evidence",
+      "speaker": "Huanrong LIU",
+      "seconds": 45,
+      "time_window": "12:30–13:15",
+      "script": "Codex helped us find the original P/A records, build checks, and verify saved results. Finding those records changed the assessment to a completed but inconclusive experiment.\n\nThe table shows the work across understanding, implementation, and analysis. The checks and source records are saved. We remain responsible for explaining the work. An agent's statement alone is not enough; we need the files and numbers that support it.",
+      "cue": "No live command is planned. Keep the optional artifact walkthrough in defense.md for questions.",
+      "references": [
+        "AI_USAGE.md; docs/course_project/peer_audit.md; docs/course_project/defense.md."
+      ]
+    },
+    {
+      "slide": 14,
+      "title": "Limits and next steps",
+      "speaker": "Huanrong LIU",
+      "seconds": 60,
+      "time_window": "13:15–14:15",
+      "script": "There are four main limits: the small P/A study, repeated use of the same patients, extra compute, and uncertainty based mostly on already trained models.\n\nThese limits lead to specific next steps. We should add more folds and seeds, fix the method before testing a new patient group, and compare systems under matched budgets. We should also repeat the full training and selection process. A three-seed ensemble is not three independent repetitions of that whole process.",
+      "cue": "Connect each limit to its next test; give the audience time to read the rows.",
+      "references": [
+        "docs/course_project/claim_and_protocol.md; improvements.md; compute.md."
+      ]
+    },
+    {
+      "slide": 15,
+      "title": "Conclusions",
+      "speaker": "Huanrong LIU",
+      "seconds": 45,
+      "time_window": "14:15–15:00",
+      "script": "Our main findings are these. The P/A test is complete, but the claim remains inconclusive. Energy calibration improves GED in the separate four-fold study. The final preference system reaches about ninety point five two percent with extra resources.\n\nThe project shows useful local gains and clear limits. More independent testing is needed before making broader claims. Thank you.",
+      "cue": "Pause between the three findings. End by 15:00 and move to questions.",
+      "references": [
+        "docs/course_project/claim_and_protocol.md; improvements.md; results/course_project/formal_e.json."
+      ]
+    }
+  ]
+}

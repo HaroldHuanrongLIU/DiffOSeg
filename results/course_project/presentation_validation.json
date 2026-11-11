@@ -4,15 +4,15 @@
   "pdf_page_count": 15,
   "layout": "16:9 UM university theme; white backgrounds; top-right UM logo",
   "pptx_kind": "full-slide raster images; edit Typst source",
-  "source_sha256": "66ccc39717e8bcb49f58dd5ab1e5a7b1f12dc968e235a838f607799900340d45",
+  "source_sha256": "c5ee4d9c01f9447c1bcc5978a5135468106645007aee922657200a0ad474eec2",
   "pdf_sha256": "a33dc2eada7058202eb0652ff0019c42bd92357446d03cf5bf6657fd21a6dea7",
-  "pptx_sha256": "834fa2e23f7d95cd89eb951041ec5e78ca001de205de524935e34f9728e3e882",
+  "pptx_sha256": "13b45085299a5c4032027f2833bdae76717297500d0886e6ea4ddef6c07d9653",
   "comparison": "same-source direct PNG at 144 PPI; slide order resolved through OOXML relationships",
   "package_xml_and_crc": "PASS",
   "pdf_text_within_page_bounds": true,
   "pdf_word_count": 1207,
   "page_numbering": "2/15 through 15/15; cover included in total",
-  "visual_review": "Pilot evidence and promotion process on pages 9\u201311 visually inspected; other 12 pages pixel-identical to the prior deck; no unintended clipping or overlap",
+  "visual_review": "All 15 slide images and PDF text unchanged after equal speaker allocation; all native PPTX notes read back and matched to source; handovers verified after slides 5 and 10",
   "evidence_smoke": {
     "command": "python3 -B scripts/check_course_project.py",
     "date": "2026-11-11",
@@ -301,5 +301,161 @@
     "other_pages_unchanged": true,
     "speaker_timing_seconds": 900,
     "new_training_or_inference": false
+  },
+  "speaker_notes_revision": {
+    "source": "presentation/speaker_notes.json",
+    "source_sha256": "7ca025b9f5ddb42067bf04e0b1942b91f0105482807c7df1ee6e342a145aa2c1",
+    "native_notes_count": 15,
+    "all_native_texts_match_source": true,
+    "all_slide_images_unchanged": true,
+    "language": "English",
+    "planned_total_seconds": 900,
+    "total_spoken_words": 1277,
+    "timing_basis": "Equal allocation: five consecutive slides and about five minutes per speaker. Planned windows include pointing, pauses and handovers after slides 5 and 10; actual timing needs rehearsal. Only the script is spoken.",
+    "speakers": {
+      "Keru ZHENG": {
+        "seconds": 300,
+        "spoken_words": 409,
+        "slides": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Yanchen MU": {
+        "seconds": 300,
+        "spoken_words": 452,
+        "slides": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "Huanrong LIU": {
+        "seconds": 300,
+        "spoken_words": 416,
+        "slides": [
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      }
+    },
+    "slides": [
+      {
+        "slide": 1,
+        "speaker": "Keru ZHENG",
+        "seconds": 20,
+        "time_window": "00:00\u201300:20",
+        "spoken_words": 26
+      },
+      {
+        "slide": 2,
+        "speaker": "Keru ZHENG",
+        "seconds": 50,
+        "time_window": "00:20\u201301:10",
+        "spoken_words": 72
+      },
+      {
+        "slide": 3,
+        "speaker": "Keru ZHENG",
+        "seconds": 80,
+        "time_window": "01:10\u201302:30",
+        "spoken_words": 102
+      },
+      {
+        "slide": 4,
+        "speaker": "Keru ZHENG",
+        "seconds": 70,
+        "time_window": "02:30\u201303:40",
+        "spoken_words": 94
+      },
+      {
+        "slide": 5,
+        "speaker": "Keru ZHENG",
+        "seconds": 80,
+        "time_window": "03:40\u201305:00",
+        "spoken_words": 115
+      },
+      {
+        "slide": 6,
+        "speaker": "Yanchen MU",
+        "seconds": 45,
+        "time_window": "05:00\u201305:45",
+        "spoken_words": 75
+      },
+      {
+        "slide": 7,
+        "speaker": "Yanchen MU",
+        "seconds": 75,
+        "time_window": "05:45\u201307:00",
+        "spoken_words": 108
+      },
+      {
+        "slide": 8,
+        "speaker": "Yanchen MU",
+        "seconds": 45,
+        "time_window": "07:00\u201307:45",
+        "spoken_words": 75
+      },
+      {
+        "slide": 9,
+        "speaker": "Yanchen MU",
+        "seconds": 60,
+        "time_window": "07:45\u201308:45",
+        "spoken_words": 90
+      },
+      {
+        "slide": 10,
+        "speaker": "Yanchen MU",
+        "seconds": 75,
+        "time_window": "08:45\u201310:00",
+        "spoken_words": 104
+      },
+      {
+        "slide": 11,
+        "speaker": "Huanrong LIU",
+        "seconds": 75,
+        "time_window": "10:00\u201311:15",
+        "spoken_words": 113
+      },
+      {
+        "slide": 12,
+        "speaker": "Huanrong LIU",
+        "seconds": 75,
+        "time_window": "11:15\u201312:30",
+        "spoken_words": 100
+      },
+      {
+        "slide": 13,
+        "speaker": "Huanrong LIU",
+        "seconds": 45,
+        "time_window": "12:30\u201313:15",
+        "spoken_words": 67
+      },
+      {
+        "slide": 14,
+        "speaker": "Huanrong LIU",
+        "seconds": 60,
+        "time_window": "13:15\u201314:15",
+        "spoken_words": 77
+      },
+      {
+        "slide": 15,
+        "speaker": "Huanrong LIU",
+        "seconds": 45,
+        "time_window": "14:15\u201315:00",
+        "spoken_words": 59
+      }
+    ],
+    "equal_slide_allocation": true,
+    "each_speaker_slides": 5,
+    "each_speaker_seconds": 300
   }
 }

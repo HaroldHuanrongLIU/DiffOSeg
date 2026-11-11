@@ -16,6 +16,7 @@ All paths below are relative to the repository. Original archive-relative paths 
 | Supplemental 90%, A and E | preference90.json, formal_a.json, formal_e.json | Corresponding archived selection, sealed predictions, training receipts |
 | Negative and partial history | registry.csv; docs/lidc_91/results.md | Each listed external run; inventory alone does not prove completion |
 | Tables in report and slides | tables.json, tables.md | scripts/render_course_tables.py from the checked JSON |
+| Embedded PPTX speaking notes and 15-minute allocation | presentation/speaker_notes.json | Typst speaker-note metadata; Touying exports native notes for all 15 slides, with speaker names, time windows and source references |
 | Compute coverage | compute_receipts.csv, compute_coverage.json | Explicit archived fit/result timing fields; not a GPU-hour total |
 | Full P/A mask replay | replay_20261108_verified/summary.json and recomputed_cases.csv | scripts/replay_course_results.py; all 2700 groups, 81000 masks; Codex executor |
 | Team allocation / confirmation | team_plan.json | User-provided 30/30/40 allocation, delegated checking and teacher confirmation |

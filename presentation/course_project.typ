@@ -73,6 +73,15 @@
 #let pa = json("../results/course_project/pa_results.json").primary
 #let v4 = json("../results/course_project/v4.json").metrics
 #let pilots = json("pilot_evidence.json")
+#let speaking-notes = json("speaker_notes.json")
+#let note-text(index) = {
+  let note = speaking-notes.slides.at(index)
+  ("Speaker: " + note.speaker
+    + "\nTime: " + str(note.seconds) + " seconds | Talk clock: " + note.time_window
+    + "\n\nSay:\n" + note.script
+    + "\n\nCue (not spoken): " + note.cue
+    + "\n\nReferences (not spoken):\n" + note.references.join("\n"))
+}
 #let fmt(value, digits: 4) = {
   let parts = str(calc.round(value, digits: digits)).split(".")
   let decimals = parts.at(1, default: "")
@@ -80,10 +89,13 @@
 }
 
 #title-slide()
+#speaker-note(raw(note-text(0)))
 
 = Paper and problem
 
 == Multi-rater segmentation
+
+#speaker-note(raw(note-text(1)))
 
 #let example-layout = (width: 720pt, height: 155pt, image-width: 1600pt, dx: -60pt, dy: -5pt)
 #align(center)[
@@ -109,6 +121,8 @@
 ]
 
 == DiffOSeg in two stages
+
+#speaker-note(raw(note-text(2)))
 
 #let framework-layout = (
   left-width: 510pt,
@@ -139,6 +153,8 @@
 
 == P versus A
 
+#speaker-note(raw(note-text(3)))
+
 #two-column(gutter: 1.8em)[
   #text(fill: um-blue, weight: "bold")[P: probabilistic consensus]
   #v(.5em)
@@ -163,6 +179,8 @@
 
 == Claim and metrics
 
+#speaker-note(raw(note-text(4)))
+
 #text(size: 24pt, weight: "bold", fill: um-blue)[Does P outperform A on LIDC-IDRI?]
 #v(.4em)
 Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
@@ -182,6 +200,8 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 
 == Paired experiment
 
+#speaker-note(raw(note-text(5)))
+
 #course-table(("Design choice", "Frozen local comparison"), (
   ("Patient separation", "160 train / 54 test patients; 450 test patches"),
   ("Repeated training", "P and A × 3 paired seeds; matched initialization"),
@@ -196,6 +216,8 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 
 == P/A result: inconclusive
 
+#speaker-note(raw(note-text(6)))
+
 #course-table(("Metric", "Paper P / A", "Local P / A"), (
   ("GED30 ↓", "0.0773 / 0.1029", fmt(pa.P_mean.at(0), digits: 6) + " / " + fmt(pa.A_mean.at(0), digits: 6)),
   ("DiceSoft30 ↑", "92.20 / 90.43%", fmt(100 * pa.P_mean.at(1)) + " / " + fmt(100 * pa.A_mean.at(1)) + "%"),
@@ -208,6 +230,8 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 #text(size: 17pt)[95% intervals use 10,000 paired seed-by-patient draws; patients retain all patches. Paper: four-fold mean. Local: three-seed mean on one fold.]
 
 == Discrepancy diagnosis
+
+#speaker-note(raw(note-text(7)))
 
 #two-column(gutter: 1.6em)[
   #set text(size: 21pt)
@@ -233,6 +257,8 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 
 == Hypotheses and pilot gates
 
+#speaker-note(raw(note-text(8)))
+
 #text(size: 18pt)[Separate four-fold extensions of Reproduced DiffOSeg; pilots use outer-training patients.]
 #v(.45em)
 #course-table(("Hypothesis / limitation", "Quantitative inner evidence", "Rule / next step"), (
@@ -256,6 +282,8 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 
 == Why v4 was promoted
 
+#speaker-note(raw(note-text(9)))
+
 #text(size: 21pt, weight: "bold", fill: um-blue)[Gate: all three four-fold mean changes must improve]
 #v(.3em)
 #text(size: 17pt)[Candidate − locked v3 surrogate, K=50. Required: ΔGED < 0; both ΔDice > 0. Dice changes are percentage points.]
@@ -277,6 +305,8 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 
 == Results and controls
 
+#speaker-note(raw(note-text(10)))
+
 #course-table(("Variant", "GED50 ↓", "DiceSoft50 (%) ↑"), (
   ("Votes v3", fmt(v4.at("GED@50").v3, digits: 6), fmt(100 * v4.at("Dice_soft@50").v3, digits: 3)),
   ("Full v4", fmt(v4.at("GED@50").full, digits: 6), fmt(100 * v4.at("Dice_soft@50").full, digits: 3)),
@@ -292,6 +322,8 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 #text(size: 17pt)[No-energy is a fixed-weight inference control, not the failed pilot. Patient CIs condition on fitted models; total compute is not matched.]
 
 == Preference extension
+
+#speaker-note(raw(note-text(11)))
 
 #two-column(left-width: 1.25fr, right-width: 1fr, gutter: 1.2em)[
   #image("assets/preference-results.svg", width: 100%, height: 210pt, fit: "contain")
@@ -314,6 +346,8 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 
 == Agent use and evidence
 
+#speaker-note(raw(note-text(12)))
+
 #course-table(("Phase", "Consequential action", "Verification record"), (
   ("Understand / audit", "Recovered the omitted P/A archive", "Frozen source, six runs and pairing"),
   ("Implement / check", "Built CPU evidence checks", "Metric fixtures and package checks"),
@@ -323,6 +357,8 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 #text(size: 21pt, fill: um-blue, weight: "bold")[Reported results are traceable; evidence checks passed.]
 
 == Limits and next steps
+
+#speaker-note(raw(note-text(13)))
 
 #course-table(("Current limit", "Next verification"), (
   ("P/A: one fold and only three seeds", "More folds / seeds; isolate encoding assumptions"),
@@ -336,6 +372,8 @@ Table 3 · Stage I · scaled-faithful · one patient fold · three paired seeds
 #text(size: 19pt)[The P/A claim, four-fold consensus study and preference extension retain separate conclusions.]
 
 == Conclusions
+
+#speaker-note(raw(note-text(14)))
 
 #text(size: 25pt, weight: "bold", fill: um-blue)[P/A reproduction: complete, but inconclusive]
 #v(.45em)
